@@ -1,0 +1,19 @@
+[31-Jul-2025 07:07:23 UTC] PHP Warning:  require(vendor/autoload.php): failed to open stream: No such file or directory in /home3/damicorp/public_html/sendmail.php on line 10
+[31-Jul-2025 07:07:23 UTC] PHP Warning:  require(vendor/autoload.php): failed to open stream: No such file or directory in /home3/damicorp/public_html/sendmail.php on line 10
+[31-Jul-2025 07:07:23 UTC] PHP Fatal error:  require(): Failed opening required 'vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php74/root/usr/share/pear') in /home3/damicorp/public_html/sendmail.php on line 10
+[06-Aug-2025 15:21:57 UTC] PHP Warning:  mail() has been disabled for security reasons in /home3/damicorp/public_html/sendmail.php on line 29
+[06-Aug-2025 15:25:35 UTC] PHP Warning:  mail() has been disabled for security reasons in /home3/damicorp/public_html/sendmail.php on line 29
+[06-Aug-2025 15:30:32 UTC] PHP Warning:  mail() has been disabled for security reasons in /home3/damicorp/public_html/sendmail.php on line 29
+[06-Aug-2025 15:33:54 UTC] PHP Warning:  mail() has been disabled for security reasons in /home3/damicorp/public_html/sendmail.php on line 29
+[06-Aug-2025 15:34:56 UTC] PHP Warning:  mail() has been disabled for security reasons in /home3/damicorp/public_html/sendmail.php on line 29
+[06-Aug-2025 15:37:48 UTC] PHP Warning:  mail() has been disabled for security reasons in /home3/damicorp/public_html/sendmail.php on line 29
+[06-Aug-2025 15:44:46 UTC] PHP Warning:  mail() has been disabled for security reasons in /home3/damicorp/public_html/sendmail.php on line 29
+[06-Aug-2025 15:57:39 UTC] PHP Warning:  mail() has been disabled for security reasons in /home3/damicorp/public_html/sendmail.php on line 29
+[06-Aug-2025 16:11:31 UTC] PHP Warning:  mail() has been disabled for security reasons in /home3/damicorp/public_html/sendmail.php on line 29
+[06-Aug-2025 16:29:06 UTC] PHP Warning:  mail() has been disabled for security reasons in /home3/damicorp/public_html/sendmail.php on line 21
+[06-Aug-2025 16:33:48 UTC] PHP Warning:  mail() has been disabled for security reasons in /home3/damicorp/public_html/sendmail.php on line 20
+[06-Aug-2025 16:35:59 UTC] PHP Warning:  mail() has been disabled for security reasons in /home3/damicorp/public_html/sendmail.php on line 22
+[11-Aug-2025 22:37:21 UTC] PHP Warning:  mail() has been disabled for security reasons in /home3/damicorp/public_html/sendmail.php on line 22
+[12-Aug-2025 01:53:27 UTC] PHP Warning:  mail() has been disabled for security reasons in /home3/damicorp/public_html/sendmail.php on line 22
+[28-Aug-2025 02:32:43 UTC] PHP Warning:  mail() has been disabled for security reasons in /home3/damicorp/public_html/sendmail.php on line 22
+[13-Sep-2025 22:41:50 UTC] PHP Warning:  mail() has been disabled for security reasons in /home3/damicorp/public_html/sendmail.php on line 22
