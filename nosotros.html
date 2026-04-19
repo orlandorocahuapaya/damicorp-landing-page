@@ -51,7 +51,7 @@
             filter: blur(2px);
         }
 
-        body::before {
+        body::before {4
             width: 420px;
             height: 420px;
             top: -160px;
@@ -128,29 +128,42 @@
         }
 
         .hero-page {
-            padding: 4rem 0 2.2rem;
-            background:
-                linear-gradient(180deg, rgba(22, 39, 68, .72) 0%, rgba(22, 39, 68, .78) 100%),
-                url("./imagenes/secciones/logo-damicor.svg") center/cover no-repeat;
+            padding: 0;
+            min-height: 380px;
+            background: url("./imagenes/secciones/logo-damicor.svg") center/cover no-repeat;
             color: #fff;
             position: relative;
             overflow: hidden;
         }
 
-        .hero-page::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(120deg, rgba(255, 255, 255, .06) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, .06) 87.5%),
-                linear-gradient(45deg, rgba(255, 255, 255, .045) 25%, transparent 25.5%, transparent 75%, rgba(255, 255, 255, .045) 75.5%);
-            background-size: 170px 170px;
-            opacity: .5;
-        }
-
         .hero-inner {
             position: relative;
             z-index: 1;
+            display: none;
+        }
+
+        .hero-title-wrap {
+            width: min(1140px, 92%);
+            margin-inline: auto;
+            min-height: 380px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-title-wrap h1 {
+            color: #ffffff;
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            line-height: 1;
+        }
+
+        .page-heading {
+            padding: 1.1rem 0 .10rem;
+        }
+
+        .page-heading h1 {
+            color: var(--azul-2);
+            font-size: clamp(2rem, 4.2vw, 3rem);
+            line-height: 1.1;
         }
 
         .eyebrow {
@@ -640,23 +653,12 @@
     </header>
 
     <main>
-        <section class="hero-page">
-            <div class="container hero-inner">
-                <span class="eyebrow">
-                    <i class="fa-solid fa-landmark"></i>
-                    Centro de arbitraje
-                </span>
-                <h1>Nosotros Arbitraje</h1>
-                <p>Conoce por que DAMICOR es una alternativa rapida, segura y efectiva para resolver controversias.</p>
-                <div class="crumb">Inicio / Nosotros</div>
-                <div class="hero-highlights">
-                    <span><i class="fa-solid fa-shield-halved"></i> Imparcialidad</span>
-                    <span><i class="fa-solid fa-gavel"></i> Resolucion especializada</span>
-                    <span><i class="fa-solid fa-bolt"></i> Procesos agiles</span>
-                </div>
+        <section class="hero-page" aria-label="Fondo institucional DAMICOR"></section>
+        <section class="page-heading">
+            <div class="container">
+                <h1>Nosotros</h1>
             </div>
         </section>
-
         <section class="content">
             <div class="container">
                 <div class="about-grid">

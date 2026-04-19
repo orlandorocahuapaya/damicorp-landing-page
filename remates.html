@@ -21,9 +21,9 @@
         .menu { display:flex; gap:1rem; flex-wrap:wrap; }
         .menu a { color:#f2f7ff; font-size:.9rem; text-transform:uppercase; font-weight:600; padding:.35rem .55rem; border-radius:999px; }
         .menu a:hover, .menu a.active { background:rgba(255,255,255,.14); }
-        .hero-page { padding:3.3rem 0 2.1rem; background:linear-gradient(180deg, rgba(22,39,68,.72) 0%, rgba(22,39,68,.78) 100%); color:#fff; }
-        .hero-page h1 { font-size:clamp(2rem,4vw,2.8rem); }
-        .hero-page p { margin-top:.45rem; color:#dce7ff; }
+        .hero-page { padding:0; min-height:380px; background:url("./imagenes/secciones/logo-damicor.svg") center/cover no-repeat; color:#fff; }
+        .page-heading { padding:1.1rem 0 .35rem; }
+        .page-heading h1 { color:var(--azul-2); font-size:clamp(2rem,4.2vw,3rem); line-height:1.1; }
         .section-title small { color:var(--azul-1); text-transform:uppercase; letter-spacing:.08em; font-weight:700; font-size:.78rem; }
         .section-title h2 { margin-top:.35rem; font-size:clamp(1.7rem,4vw,2.4rem); color:var(--azul-2); }
         .remates { padding:2.2rem 0 3.5rem; }
@@ -64,18 +64,14 @@
         </div>
     </header>
     <main>
-        <section class="hero-page">
+        <section class="hero-page" aria-label="Fondo institucional DAMICOR"></section>
+        <section class="page-heading">
             <div class="container">
                 <h1>Remates</h1>
-                <p>Convocatorias y expedientes en publicación.</p>
             </div>
         </section>
         <section class="remates">
             <div class="container">
-                <div class="section-title">
-                    <small>Procesos en publicación</small>
-                    <h2>Remates arbitrales</h2>
-                </div>
                 <div class="remates-grid">
                     <article class="remate-card">
                         <img src="https://cdn.pixabay.com/photo/2017/10/05/20/49/office-2820890_640.jpg" alt="Remate 1" loading="lazy">
