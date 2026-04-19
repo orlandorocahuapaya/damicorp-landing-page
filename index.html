@@ -189,60 +189,26 @@
             object-fit: cover;
         }
 
-        .why {
+        .about-preview {
             padding: 1rem 0 3rem;
         }
 
-        .why-grid {
+        .about-box {
+            background: #fff;
+            border: 1px solid #d8e0ef;
+            border-radius: 20px;
+            padding: 1.4rem;
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: 1fr auto;
             gap: 1rem;
+            align-items: center;
+            box-shadow: 0 14px 28px rgba(35, 61, 105, .08);
         }
 
-        .card {
-            background: var(--blanco);
-            border: 1px solid var(--gris-2);
-            border-radius: 16px;
-            padding: 1.2rem;
-            box-shadow: 0 8px 24px rgba(16, 36, 71, .08);
-        }
-
-        .card i {
-            color: var(--azul-1);
-            font-size: 1.35rem;
-            margin-bottom: .7rem;
-        }
-
-        .card h3 {
-            color: var(--azul-2);
-            margin-bottom: .45rem;
-            font-size: 1.06rem;
-        }
-
-        .card p {
+        .about-box p {
             color: #3a4862;
-            font-size: .95rem;
-        }
-
-        .split {
-            padding: 1.6rem 0 3.2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .split article {
-            border-radius: 16px;
-            overflow: hidden;
-            min-height: 280px;
-            position: relative;
-            box-shadow: 0 14px 28px rgba(35, 61, 105, .18);
-        }
-
-        .split img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            font-size: .98rem;
+            max-width: 75ch;
         }
 
         .remates {
@@ -395,12 +361,10 @@
 
         @media (max-width: 980px) {
             .hero-grid,
-            .split,
             .cta-box {
                 grid-template-columns: 1fr;
             }
 
-            .why-grid,
             .remates-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -420,7 +384,6 @@
                 justify-content: center;
             }
 
-            .why-grid,
             .remates-grid {
                 grid-template-columns: 1fr;
             }
@@ -447,7 +410,7 @@
 
             <nav class="menu">
                 <a href="#inicio">Inicio</a>
-                <a href="#nosotros">Nosotros</a>
+                <a href="nosotros.html">Nosotros</a>
                 <a href="#remates">Remates</a>
                 <a href="#preguntas">Preguntas</a>
                 <a href="#contacto">Contacto</a>
@@ -478,40 +441,23 @@
             </div>
         </section>
 
-        <section class="why" id="nosotros">
+        <section class="about-preview" id="nosotros">
             <div class="container">
                 <div class="section-title">
-                    <small>Por qué DAMICOR</small>
-                    <h2>¿Por qué trabajar con nosotros?</h2>
+                    <small>Conoce DAMICOR</small>
+                    <h2>Nuestra trayectoria y principios</h2>
                 </div>
 
-                <div class="why-grid">
-                    <article class="card">
-                        <i class="fa-solid fa-user-tie"></i>
-                        <h3>Experiencia y reputación</h3>
-                        <p>Contamos con un equipo profesional altamente capacitado en arbitraje y gestión de conflictos.</p>
-                    </article>
-                    <article class="card">
-                        <i class="fa-solid fa-shield-halved"></i>
-                        <h3>Confidencialidad e imparcialidad</h3>
-                        <p>Protegemos la información de cada caso con protocolos claros y trato neutral a todas las partes.</p>
-                    </article>
-                    <article class="card">
-                        <i class="fa-solid fa-bolt"></i>
-                        <h3>Eficiencia y celeridad</h3>
-                        <p>Impulsamos procedimientos ágiles para evitar la congestión judicial y obtener resultados oportunos.</p>
-                    </article>
-                </div>
-
-                <div class="split">
-                    <article>
-                        <img src="https://cdn.pixabay.com/photo/2022/08/14/01/46/lawyer-7384762_1280.jpg"
-                            alt="Abogado en oficina" loading="lazy">
-                    </article>
-                    <article>
-                        <img src="https://cdn.pixabay.com/photo/2017/06/09/22/56/lady-justice-2388500_640.jpg"
-                            alt="Símbolo de justicia" loading="lazy">
-                    </article>
+                <div class="about-box">
+                    <p>
+                        Somos un centro de arbitraje que brinda un servicio profesional, imparcial y transparente para
+                        la solución de controversias. Revisa nuestra página de Nosotros para conocer nuestra misión,
+                        visión y valores institucionales.
+                    </p>
+                    <a class="btn btn-primary" href="nosotros.html">
+                        <i class="fa-solid fa-arrow-right"></i>
+                        Ver página Nosotros
+                    </a>
                 </div>
             </div>
         </section>
