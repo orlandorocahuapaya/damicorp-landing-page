@@ -351,12 +351,49 @@
             background: rgba(255, 255, 255, .12);
         }
 
-        footer {
-            background: #0e1623;
-            color: #c7d4ea;
-            padding: 1.2rem 0;
-            font-size: .9rem;
+        .site-footer {
+            background: #0d1523;
+            color: #d6e2f6;
+            border-top: 4px solid var(--azul-1);
+            padding: 1.5rem 0 1rem;
+            margin-top: 1.4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .footer-brand h4 {
+            color: #ffffff;
+            font-size: 1.15rem;
+            margin-bottom: .35rem;
+        }
+
+        .footer-brand p,
+        .footer-block p {
+            margin: .2rem 0;
+            color: #c4d3ee;
+            font-size: .92rem;
+            line-height: 1.45;
+        }
+
+        .footer-block h5 {
+            color: #ffffff;
+            font-size: .95rem;
+            margin-bottom: .35rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+        }
+
+        .footer-copy {
+            margin-top: 1rem;
+            padding-top: .8rem;
+            border-top: 1px solid rgba(255, 255, 255, .14);
             text-align: center;
+            color: #aebedd;
+            font-size: .86rem;
         }
 
         @media (max-width: 980px) {
@@ -396,6 +433,10 @@
                 width: 210px;
                 height: 58px;
             }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -404,16 +445,16 @@
 
     <header class="topbar">
         <div class="container inner">
-            <a href="#inicio" class="brand">
+            <a href="index.html" class="brand">
                 <img src="./imagenes/secciones/logo-damicor.svg" alt="Logo DAMICOR">
             </a>
 
             <nav class="menu">
-                <a href="#inicio">Inicio</a>
+                <a href="index.html">Inicio</a>
                 <a href="nosotros.html">Nosotros</a>
-                <a href="#remates">Remates</a>
-                <a href="#preguntas">Preguntas</a>
-                <a href="#contacto">Contacto</a>
+                <a href="remates.html">Remates</a>
+                <a href="preguntas.html">Preguntas</a>
+                <a href="contacto.html">Contacto</a>
             </nav>
         </div>
     </header>
@@ -480,7 +521,7 @@
                                 <li>21/ABRIL/2026 - Quinta convocatoria</li>
                                 <li>07/ABRIL/2026 - Cuarta convocatoria</li>
                             </ul>
-                            <a class="btn btn-primary" href="#contacto"><i class="fa-solid fa-file-lines"></i> Ver documento</a>
+                            <a class="btn btn-primary" href="contacto.html"><i class="fa-solid fa-file-lines"></i> Ver documento</a>
                         </div>
                     </article>
 
@@ -494,7 +535,7 @@
                                 <li>10/ABRIL/2026 - Quinta convocatoria</li>
                                 <li>27/MARZO/2026 - Cuarta convocatoria</li>
                             </ul>
-                            <a class="btn btn-primary" href="#contacto"><i class="fa-solid fa-file-lines"></i> Ver documento</a>
+                            <a class="btn btn-primary" href="contacto.html"><i class="fa-solid fa-file-lines"></i> Ver documento</a>
                         </div>
                     </article>
 
@@ -508,7 +549,7 @@
                                 <li>27/MARZO/2026 - Octava convocatoria</li>
                                 <li>13/MARZO/2026 - Séptima convocatoria</li>
                             </ul>
-                            <a class="btn btn-primary" href="#contacto"><i class="fa-solid fa-file-lines"></i> Ver documento</a>
+                            <a class="btn btn-primary" href="contacto.html"><i class="fa-solid fa-file-lines"></i> Ver documento</a>
                         </div>
                     </article>
                 </div>
@@ -564,9 +605,25 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="site-footer">
         <div class="container">
-            © 2026 DAMICOR. Todos los derechos reservados.
+            <div class="footer-grid">
+                <article class="footer-brand">
+                    <h4>DAMICOR</h4>
+                    <p>Centro de arbitraje especializado en soluciones rapidas, seguras y efectivas.</p>
+                </article>
+                <article class="footer-block">
+                    <h5>Contacto</h5>
+                    <p>Telefonos: +51 920 541 682 | +51 901 620 888</p>
+                    <p>Correo: procesos@damicorperu.com</p>
+                </article>
+                <article class="footer-block">
+                    <h5>Datos bancarios</h5>
+                    <p>Cuenta corriente: [COMPLETAR]</p>
+                    <p>CCI: [COMPLETAR]</p>
+                </article>
+            </div>
+            <div class="footer-copy">&copy; 2026 DAMICOR. Todos los derechos reservados.</div>
         </div>
     </footer>
 

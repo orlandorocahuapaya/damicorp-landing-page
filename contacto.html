@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contacto DAMICOR: mesa de partes, correo y WhatsApp.">
+    <title>Contacto | DAMICOR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Taviraj:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        :root { --azul-1:#2f5a9e; --azul-2:#2b4d7d; --azul-3:#233d69; }
+        * { box-sizing:border-box; margin:0; padding:0; }
+        body { font-family:"Taviraj", serif; color:#0f1113; background:linear-gradient(180deg,#fff 0%,#f4f8ff 100%); }
+        a { text-decoration:none; color:inherit; }
+        .container { width:min(980px,92%); margin-inline:auto; }
+        .topbar { position:sticky; top:0; z-index:40; background:rgba(15,17,19,.92); backdrop-filter:blur(7px); border-bottom:1px solid rgba(255,255,255,.08); }
+        .topbar .inner { min-height:72px; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; }
+        .brand img { width:300px; height:80px; object-fit:contain; }
+        .menu { display:flex; gap:1rem; flex-wrap:wrap; }
+        .menu a { color:#f2f7ff; font-size:.9rem; text-transform:uppercase; font-weight:600; padding:.35rem .55rem; border-radius:999px; }
+        .menu a:hover, .menu a.active { background:rgba(255,255,255,.14); }
+        .hero-page { padding:3.3rem 0 2.1rem; background:linear-gradient(180deg, rgba(22,39,68,.72) 0%, rgba(22,39,68,.78) 100%); color:#fff; }
+        .hero-page h1 { font-size:clamp(2rem,4vw,2.8rem); }
+        .hero-page p { margin-top:.45rem; color:#dce7ff; }
+        .cta { padding:2.5rem 0 3.4rem; }
+        .cta-box { background:linear-gradient(120deg,var(--azul-3) 0%,var(--azul-1) 100%); color:#fff; border-radius:20px; padding:1.6rem; display:grid; grid-template-columns:1.1fr .9fr; gap:1rem; align-items:center; }
+        .cta h3 { font-size:clamp(1.25rem,3vw,1.8rem); margin-bottom:.6rem; }
+        .cta ul { list-style:none; display:grid; gap:.35rem; font-size:.94rem; }
+        .cta ul i { margin-right:.35rem; color:#b7d0ff; }
+        .cta-links { display:grid; gap:.55rem; }
+        .cta a { color:#fff; border:1px solid rgba(255,255,255,.3); border-radius:12px; padding:.75rem .9rem; font-weight:700; font-size:.93rem; transition:.22s ease; }
+        .cta a:hover { background:rgba(255,255,255,.12); }
+        .site-footer { background:#0d1523; color:#d6e2f6; border-top:4px solid var(--azul-1); padding:1.5rem 0 1rem; margin-top:1.4rem; }
+        .footer-grid { display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:1rem; }
+        .footer-brand h4 { color:#fff; font-size:1.15rem; margin-bottom:.35rem; }
+        .footer-brand p, .footer-block p { margin:.2rem 0; color:#c4d3ee; font-size:.92rem; line-height:1.45; }
+        .footer-block h5 { color:#fff; font-size:.95rem; margin-bottom:.35rem; text-transform:uppercase; letter-spacing:.04em; }
+        .footer-copy { margin-top:1rem; padding-top:.8rem; border-top:1px solid rgba(255,255,255,.14); text-align:center; color:#aebedd; font-size:.86rem; }
+        @media (max-width:980px) { .cta-box { grid-template-columns:1fr; } }
+        @media (max-width:640px) { .topbar .inner { flex-direction:column; padding:.8rem 0; } .menu { justify-content:center; } .brand img { width:210px; height:58px; } .footer-grid { grid-template-columns:1fr; } }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="container inner">
+            <a href="index.html" class="brand"><img src="./imagenes/secciones/logo-damicor.svg" alt="Logo DAMICOR"></a>
+            <nav class="menu">
+                <a href="index.html">Inicio</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a href="remates.html">Remates</a>
+                <a href="preguntas.html">Preguntas</a>
+                <a class="active" href="contacto.html">Contacto</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="hero-page">
+            <div class="container">
+                <h1>Contacto</h1>
+                <p>Atención y mesa de partes para consultas de arbitraje y remates.</p>
+            </div>
+        </section>
+        <section class="cta">
+            <div class="container">
+                <div class="cta-box">
+                    <article>
+                        <h3>Atención y mesa de partes</h3>
+                        <ul>
+                            <li><i class="fa-solid fa-envelope"></i> procesos@damicorperu.com</li>
+                            <li><i class="fa-brands fa-whatsapp"></i> +51 920 541 682</li>
+                            <li><i class="fa-brands fa-whatsapp"></i> +51 901 620 888</li>
+                            <li><i class="fa-solid fa-location-dot"></i> Lima, Perú</li>
+                        </ul>
+                    </article>
+                    <div class="cta-links">
+                        <a href="https://wa.me/51920541682?text=Hola%2C+deseo+informaci%C3%B3n+sobre+arbitraje" target="_blank" rel="noopener noreferrer">Escribir al WhatsApp 1</a>
+                        <a href="https://wa.me/51901620888?text=Hola%2C+deseo+informaci%C3%B3n+sobre+remates" target="_blank" rel="noopener noreferrer">Escribir al WhatsApp 2</a>
+                        <a href="mailto:procesos@damicorperu.com">Enviar correo</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <article class="footer-brand">
+                    <h4>DAMICOR</h4>
+                    <p>Centro de arbitraje especializado en soluciones rapidas, seguras y efectivas.</p>
+                </article>
+                <article class="footer-block">
+                    <h5>Contacto</h5>
+                    <p>Telefonos: +51 920 541 682 | +51 901 620 888</p>
+                    <p>Correo: procesos@damicorperu.com</p>
+                </article>
+                <article class="footer-block">
+                    <h5>Datos bancarios</h5>
+                    <p>Cuenta corriente: [COMPLETAR]</p>
+                    <p>CCI: [COMPLETAR]</p>
+                </article>
+            </div>
+            <div class="footer-copy">&copy; 2026 DAMICOR. Todos los derechos reservados.</div>
+        </div>
+    </footer>
+</body>
+</html>

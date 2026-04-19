@@ -261,17 +261,143 @@
             margin-bottom: .7rem;
         }
 
+        .box h3 {
+            color: var(--azul-2);
+            margin: .9rem 0 .5rem;
+            font-size: 1.15rem;
+        }
+
+        .bullet-list {
+            margin: .35rem 0 .9rem;
+            color: #364764;
+            display: grid;
+            gap: .35rem;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 1.15rem;
+            line-height: 1.45;
+        }
+
+        .bullet-list li::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: var(--azul-1);
+            position: absolute;
+            left: 0;
+            top: .5rem;
+        }
+
+        .about-main {
+            padding: 1.55rem;
+        }
+
+        .about-main h2 {
+            font-size: clamp(1.9rem, 3.8vw, 3rem);
+            line-height: 1.14;
+            margin-bottom: 1rem;
+        }
+
+        .intro-text {
+            font-size: 1.08rem;
+            line-height: 1.56;
+            color: #32445f;
+        }
+
+        .kpi-row {
+            margin: .9rem 0 1.1rem;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: .65rem;
+        }
+
+        .kpi-badge {
+            background: linear-gradient(145deg, #2f5a9e 0%, #244f91 100%);
+            border-radius: 14px;
+            padding: .65rem .72rem;
+            color: #fff;
+            box-shadow: 0 8px 16px rgba(26, 52, 94, .18);
+        }
+
+        .kpi-badge strong {
+            display: block;
+            font-size: 1.05rem;
+            line-height: 1.1;
+            margin-bottom: .25rem;
+        }
+
+        .kpi-badge span {
+            display: block;
+            font-size: .78rem;
+            line-height: 1.3;
+            color: #d9e8ff;
+        }
+
+        .info-block {
+            margin-top: .95rem;
+            border: 1px solid #d6e1f2;
+            border-left: 5px solid var(--azul-1);
+            border-radius: 14px;
+            background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+            padding: .95rem 1rem;
+        }
+
+        .info-block h3 {
+            margin-top: 0;
+            margin-bottom: .45rem;
+            font-size: 1.35rem;
+        }
+
+        .info-block p {
+            margin-bottom: .6rem;
+        }
+
+        .note {
+            margin-top: .35rem;
+            padding: .58rem .68rem;
+            border-radius: 10px;
+            background: rgba(47, 90, 158, .08);
+            border: 1px solid rgba(47, 90, 158, .16);
+        }
+
         .photo {
             border-radius: 18px;
             overflow: hidden;
             min-height: 320px;
             box-shadow: 0 16px 32px rgba(29, 51, 88, .2);
+            position: sticky;
+            top: 96px;
+        }
+
+        .photo::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(19, 34, 63, 0) 55%, rgba(19, 34, 63, .58) 100%);
+            pointer-events: none;
         }
 
         .photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        .photo figcaption {
+            position: absolute;
+            left: 1rem;
+            right: 1rem;
+            bottom: .9rem;
+            color: #f4f8ff;
+            font-size: .92rem;
+            line-height: 1.35;
+            font-weight: 600;
+            z-index: 1;
         }
 
         .double-grid {
@@ -334,10 +460,10 @@
         }
 
         .values {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 1.4rem;
-            align-items: start;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.6rem 1.3rem;
         }
 
         .value-card {
@@ -347,6 +473,8 @@
             padding: .4rem;
             box-shadow: none;
             text-align: center;
+            flex: 1 1 240px;
+            max-width: 280px;
         }
 
         .value-icon {
@@ -386,12 +514,49 @@
             box-shadow: none;
         }
 
-        footer {
-            background: #0e1623;
-            color: #c7d4ea;
-            padding: 1.2rem 0;
-            font-size: .9rem;
+        .site-footer {
+            background: #0d1523;
+            color: #d6e2f6;
+            border-top: 4px solid var(--azul-1);
+            padding: 1.5rem 0 1rem;
+            margin-top: 1.4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .footer-brand h4 {
+            color: #ffffff;
+            font-size: 1.15rem;
+            margin-bottom: .35rem;
+        }
+
+        .footer-brand p,
+        .footer-block p {
+            margin: .2rem 0;
+            color: #c4d3ee;
+            font-size: .92rem;
+            line-height: 1.45;
+        }
+
+        .footer-block h5 {
+            color: #ffffff;
+            font-size: .95rem;
+            margin-bottom: .35rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+        }
+
+        .footer-copy {
+            margin-top: 1rem;
+            padding-top: .8rem;
+            border-top: 1px solid rgba(255, 255, 255, .14);
             text-align: center;
+            color: #aebedd;
+            font-size: .86rem;
         }
 
         @media (max-width: 980px) {
@@ -400,12 +565,21 @@
                 grid-template-columns: 1fr;
             }
 
+            .photo {
+                position: relative;
+                top: 0;
+            }
+
             .impact-strip {
                 grid-template-columns: 1fr 1fr;
             }
 
             .values {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
+                justify-content: center;
+            }
+
+            .kpi-row {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -425,7 +599,12 @@
             }
 
             .values {
-                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .value-card {
+                flex: 1 1 100%;
+                max-width: 100%;
             }
 
             .impact-strip {
@@ -435,6 +614,10 @@
             .hero-highlights {
                 gap: .5rem;
             }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -442,16 +625,16 @@
 <body>
     <header class="topbar">
         <div class="container inner">
-            <a href="index.html#inicio" class="brand">
+            <a href="index.html" class="brand">
                 <img src="./imagenes/secciones/logo-damicor.svg" alt="Logo DAMICOR">
             </a>
 
             <nav class="menu">
-                <a href="index.html#inicio">Inicio</a>
+                <a href="index.html">Inicio</a>
                 <a class="active" href="nosotros.html">Nosotros</a>
-                <a href="index.html#remates">Remates</a>
-                <a href="index.html#preguntas">Preguntas</a>
-                <a href="index.html#contacto">Contacto</a>
+                <a href="remates.html">Remates</a>
+                <a href="preguntas.html">Preguntas</a>
+                <a href="contacto.html">Contacto</a>
             </nav>
         </div>
     </header>
@@ -463,13 +646,13 @@
                     <i class="fa-solid fa-landmark"></i>
                     Centro de arbitraje
                 </span>
-                <h1>Nosotros</h1>
-                <p>Conoce nuestra identidad institucional y el compromiso que asumimos en cada proceso arbitral.</p>
+                <h1>Nosotros Arbitraje</h1>
+                <p>Conoce por que DAMICOR es una alternativa rapida, segura y efectiva para resolver controversias.</p>
                 <div class="crumb">Inicio / Nosotros</div>
                 <div class="hero-highlights">
                     <span><i class="fa-solid fa-shield-halved"></i> Imparcialidad</span>
-                    <span><i class="fa-solid fa-gavel"></i> Resolución especializada</span>
-                    <span><i class="fa-solid fa-bolt"></i> Procesos ágiles</span>
+                    <span><i class="fa-solid fa-gavel"></i> Resolucion especializada</span>
+                    <span><i class="fa-solid fa-bolt"></i> Procesos agiles</span>
                 </div>
             </div>
         </section>
@@ -477,101 +660,181 @@
         <section class="content">
             <div class="container">
                 <div class="about-grid">
-                    <article class="box">
-                        <h2>Sobre nosotros</h2>
-                        <p>
-                            En DAMICOR atendemos controversias entre personas y empresas mediante arbitraje, con un
-                            enfoque claro, profesional y orientado a soluciones concretas.
+                    <article class="box about-main">
+                        <h2>Centro de Arbitraje: Soluciones rapidas, seguras y efectivas</h2>
+                        <p class="intro-text">
+                            Somos un centro de arbitraje especializado en la resolucion de controversias entre
+                            particulares, ofreciendo una alternativa eficiente frente a la justicia tradicional.
                         </p>
-                        <p>
-                            Integran nuestro centro especialistas en derecho y gestion procesal que priorizan
-                            decisiones consistentes, plazos razonables y comunicacion permanente.
+                        <p class="intro-text">
+                            En nuestro centro de arbitraje, transformamos la incertidumbre en resultados claros,
+                            rapidos y ejecutables.
                         </p>
-                        <p>
-                            Nuestra labor busca dar seguridad a las partes en cada etapa, ofreciendo una alternativa
-                            seria y eficiente frente a los tramites judiciales tradicionales.
-                        </p>
+
+                        <div class="kpi-row">
+                            <article class="kpi-badge">
+                                <strong>2 dias</strong>
+                                <span>Admision e instalacion del tribunal arbitral</span>
+                            </article>
+                            <article class="kpi-badge">
+                                <strong>35 dias</strong>
+                                <span>Duracion promedio del proceso arbitral</span>
+                            </article>
+                            <article class="kpi-badge">
+                                <strong>3 meses</strong>
+                                <span>Ejecucion via remate (promedio)</span>
+                            </article>
+                        </div>
+
+                        <section class="info-block">
+                            <h3>Rapidez sin comprometer la seguridad juridica</h3>
+                            <p>
+                                Nuestros procesos destacan por su agilidad, garantizando siempre el debido proceso y la
+                                solidez legal en cada decision.
+                            </p>
+                            <ul class="bullet-list">
+                                <li>Admision de solicitud - demanda e instalacion del tribunal arbitral: promedio de 2 dias.</li>
+                                <li>Duracion total del proceso arbitral: aproximadamente 35 dias.</li>
+                            </ul>
+                            <p class="note">Esto permite a nuestros usuarios obtener soluciones en semanas, no en anos.</p>
+                        </section>
+
+                        <section class="info-block">
+                            <h3>Ejecucion efectiva del laudo arbitral</h3>
+                            <p>
+                                No solo resolvemos controversias: aseguramos que las decisiones se cumplan. Los laudos
+                                arbitrales emitidos pueden ejecutarse directamente en nuestra sede mediante:
+                            </p>
+                            <ul class="bullet-list">
+                                <li>Remate de bienes muebles e inmuebles.</li>
+                                <li>Inscripcion de adjudicaciones en Registros Publicos.</li>
+                                <li>Orden de lanzamiento de ocupantes en los inmuebles adjudicados.</li>
+                            </ul>
+                            <p class="note">
+                                El proceso de ejecucion via remate tiene una duracion promedio de 3 meses adicionales,
+                                tras lo cual se concreta la inscripcion y el lanzamiento correspondiente.
+                            </p>
+                        </section>
+
+                        <section class="info-block">
+                            <h3>Por que elegirnos?</h3>
+                            <ul class="bullet-list">
+                                <li>Procesos significativamente mas rapidos que la via judicial.</li>
+                                <li>Seguridad juridica garantizada.</li>
+                                <li>Ejecucion real y efectiva de los laudos.</li>
+                                <li>Acompanamiento especializado en todas las etapas.</li>
+                            </ul>
+                        </section>
                     </article>
 
                     <figure class="photo">
                         <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=80" alt="Equipo legal DAMICOR" loading="lazy">
+                        <figcaption>Arbitraje con enfoque practico, seguridad juridica y ejecucion efectiva.</figcaption>
                     </figure>
                 </div>
 
                 <div class="impact-strip">
                     <article class="impact-item">
-                        <strong>+10</strong>
-                        <span>Años impulsando soluciones arbitrales</span>
+                        <strong>2 dias</strong>
+                        <span>Admision e instalacion del tribunal arbitral</span>
                     </article>
                     <article class="impact-item">
-                        <strong>100%</strong>
-                        <span>Compromiso con confidencialidad y transparencia</span>
+                        <strong>35 dias</strong>
+                        <span>Duracion promedio total del proceso arbitral</span>
                     </article>
                     <article class="impact-item">
-                        <strong>24/7</strong>
-                        <span>Canales de atención para seguimiento de casos</span>
+                        <strong>3 meses</strong>
+                        <span>Promedio adicional para ejecucion via remate</span>
                     </article>
                 </div>
 
                 <div class="double-grid">
                     <article class="box">
-                        <h3>Visión</h3>
+                        <h3>MISION</h3>
                         <p>
-                            Ser una institucion arbitral de referencia por su capacidad tecnica, su trato cercano y su
-                            gestion moderna de los procesos.
+                            Brindar servicios de arbitraje eficientes, agiles y con altos estandares juridicos,
+                            resolviendo controversias entre particulares en plazos cortos y garantizando la ejecucion
+                            efectiva de los laudos, a traves de un equipo especializado y procesos optimizados que
+                            priorizan la seguridad juridica y los resultados concretos.
                         </p>
                     </article>
                     <article class="box">
-                        <h3>Misión</h3>
+                        <h3>VISION</h3>
                         <p>
-                            Administrar arbitrajes con rigor juridico, transparencia y orden operativo para que cada
-                            caso llegue a una solucion justa en tiempos oportunos.
+                            Convertirnos en el centro de arbitraje referente a nivel nacional, elegido por personas y
+                            empresas que buscan resolver sus controversias de manera rapida, segura y con resultados
+                            realmente ejecutables; consolidando un modelo de justicia privada donde cada decision no
+                            solo se emite, sino que se cumple de forma efectiva, reduciendo costos, tiempos e
+                            incertidumbre.
                         </p>
                     </article>
                 </div>
 
                 <div class="section-head">
-                    <small>Nuestros valores</small>
-                    <h2>Nuestros valores</h2>
+                    <small>Propuesta DAMICOR</small>
+                    <h2>Nuestros Valores</h2>
                 </div>
 
                 <div class="values">
                     <article class="value-card">
                         <div class="value-icon">
-                            <i class="fa-solid fa-people-group"></i>
-                        </div>
-                        <h3>Cercania</h3>
-                        <p>Escuchamos cada caso con atencion y mantenemos un trato humano en todo momento.</p>
-                    </article>
-                    <article class="value-card">
-                        <div class="value-icon">
                             <i class="fa-solid fa-bolt"></i>
                         </div>
-                        <h3>Celeridad</h3>
-                        <p>Impulsamos procesos agiles para evitar demoras innecesarias y avanzar con orden.</p>
+                        <h3>Rapidez real</h3>
+                        <p>Procesos arbitrales que concluyen en semanas, no en anos.</p>
                     </article>
                     <article class="value-card">
                         <div class="value-icon">
-                            <i class="fa-solid fa-gavel"></i>
+                            <i class="fa-solid fa-hammer"></i>
                         </div>
-                        <h3>Rigor tecnico</h3>
-                        <p>Analizamos cada expediente con criterio juridico solido y fundamentos verificables.</p>
+                        <h3>Ejecucion efectiva</h3>
+                        <p>Aseguramos el cumplimiento de los laudos con remates e inscripciones.</p>
+                    </article>
+                    <article class="value-card">
+                        <div class="value-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3>Seguridad juridica</h3>
+                        <p>Decisiones solidas, respaldadas por especialistas y debido proceso.</p>
+                    </article>
+                    <article class="value-card">
+                        <div class="value-icon">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <h3>Ahorro de costos y tiempo</h3>
+                        <p>Reducimos la carga y la demora del sistema judicial tradicional.</p>
                     </article>
                     <article class="value-card">
                         <div class="value-icon">
                             <i class="fa-solid fa-bullseye"></i>
                         </div>
-                        <h3>Enfoque en resultados</h3>
-                        <p>Trabajamos para que cada proceso concluya con decisiones utiles, claras y ejecutables.</p>
+                        <h3>Resultados tangibles</h3>
+                        <p>No solo obtienes un laudo: obtienes una solucion ejecutable.</p>
                     </article>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
+    <footer class="site-footer">
         <div class="container">
-            © 2026 DAMICOR. Todos los derechos reservados.
+            <div class="footer-grid">
+                <article class="footer-brand">
+                    <h4>DAMICOR</h4>
+                    <p>Centro de arbitraje especializado en soluciones rapidas, seguras y efectivas.</p>
+                </article>
+                <article class="footer-block">
+                    <h5>Contacto</h5>
+                    <p>Telefonos: +51 920 541 682 | +51 901 620 888</p>
+                    <p>Correo: procesos@damicorperu.com</p>
+                </article>
+                <article class="footer-block">
+                    <h5>Datos bancarios</h5>
+                    <p>Cuenta corriente: [COMPLETAR]</p>
+                    <p>CCI: [COMPLETAR]</p>
+                </article>
+            </div>
+            <div class="footer-copy">&copy; 2026 DAMICOR. Todos los derechos reservados.</div>
         </div>
     </footer>
 </body>
