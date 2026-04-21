@@ -29,13 +29,13 @@ RUN mkdir -p storage bootstrap/cache \
 EXPOSE 8080
 
 # ====== Arranque ======
-# Descubre paquetes ahora que ya existe artisan, limpia caches y migra;
-# luego levanta el servidor embebido de PHP en 0.0.0.0:${PORT:-8080}
+# Descubre paquetes, limpia caches y migra;
+# luego levanta Laravel escuchando en 0.0.0.0:${PORT:-8080}
 CMD sh -lc '\
   php artisan package:discover --ansi || true; \
   php artisan config:clear || true; \
   php artisan route:clear || true; \
   php artisan cache:clear || true; \
   php artisan migrate --force || true; \
-  exec php -d variables_order=EGPCS -S 0.0.0.0:${PORT:-8080} -t public public/index.php \
+  exec php artisan serve --host=0.0.0.0 --port=${PORT:-8080} \
 '
