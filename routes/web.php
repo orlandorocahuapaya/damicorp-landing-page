@@ -10,11 +10,15 @@ $adminLoginPath = config('remates.login_path');
 $adminPanelPrefix = config('remates.panel_prefix');
 
 Route::get('/', function () {
-    return redirect('/index.html');
+    return response()->file(public_path('index.html'));
+});
+
+Route::get('/index.html', function () {
+    return redirect('/', 301);
 });
 
 Route::get('/index.html/{extra}', function () {
-    return redirect('/index.html', 301);
+    return redirect('/', 301);
 })->where('extra', '.*');
 
 Route::post('/contacto/enviar', [ContactController::class, 'send']);
