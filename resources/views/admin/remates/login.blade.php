@@ -17,7 +17,7 @@
 <body>
     <main class="card">
         <h1>Panel privado de remates</h1>
-        <form method="post" action="{{ route('admin.remates.login.submit') }}">
+        <form method="post" action="{{ route('admin.remates.login.submit', [], false) }}">
             @csrf
             <label for="password">Contrasena</label>
             <input id="password" name="password" type="password" required autocomplete="current-password">
