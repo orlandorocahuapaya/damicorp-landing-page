@@ -1,0 +1,897 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Conoce DAMICOR: nuestra misión, visión y valores en la administración de procesos arbitrales.">
+    <meta name="author" content="DAMICORP">
+    <title>Nosotros | DAMICOR</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Taviraj:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+        :root {
+            --azul-1: #2f5a9e;
+            --azul-2: #2b4d7d;
+            --azul-3: #233d69;
+            --oscuro: #0f1113;
+            --gris-1: #f5f7fb;
+            --gris-2: #d7deea;
+            --blanco: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Taviraj", serif;
+            color: var(--oscuro);
+            background: linear-gradient(180deg, #ffffff 0%, #f4f8ff 100%);
+            line-height: 1.55;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            border-radius: 999px;
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(2px);
+        }
+
+        body::before {
+            width: 420px;
+            height: 420px;
+            top: -160px;
+            right: -120px;
+            background: radial-gradient(circle, rgba(64, 111, 185, .25), rgba(64, 111, 185, 0));
+        }
+
+        body::after {
+            width: 360px;
+            height: 360px;
+            bottom: -120px;
+            left: -120px;
+            background: radial-gradient(circle, rgba(35, 61, 105, .2), rgba(35, 61, 105, 0));
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1140px, 92%);
+            margin-inline: auto;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background: rgba(15, 17, 19, .92);
+            backdrop-filter: blur(7px);
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .topbar .inner {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .brand img {
+            width: 300px;
+            height: 80px;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .25));
+        }
+
+        .menu {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .menu a {
+            color: #f2f7ff;
+            font-size: .9rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            padding: .35rem .55rem;
+            border-radius: 999px;
+            transition: .25s ease;
+        }
+
+        .menu a:hover,
+        .menu a.active {
+            background: rgba(255, 255, 255, .14);
+        }
+
+        .hero-page {
+            padding: 0;
+            min-height: 380px;
+            background: #0f4ea8 url("./imagenes/secciones/logo-damicor.jpeg") center/contain no-repeat;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 -42px 70px rgba(0, 0, 0, .35), inset 0 24px 34px rgba(255, 255, 255, .05);
+        }
+
+        .hero-page::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(180deg, rgba(4, 15, 40, .28) 0%, rgba(4, 15, 40, .42) 100%);
+        }
+
+        .hero-page::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image: linear-gradient(150deg, rgba(255,255,255,.13) 10px, transparent 10px), linear-gradient(30deg, rgba(255,255,255,.09) 10px, transparent 10px), linear-gradient(150deg, transparent 24px, rgba(255,255,255,.11) 24px 36px, transparent 36px), linear-gradient(30deg, transparent 24px, rgba(255,255,255,.08) 24px 36px, transparent 36px); background-size: 84px 48px, 84px 48px, 84px 48px, 84px 48px; background-position: 0 0, 42px 24px, 0 0, 42px 24px; opacity:.36;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            display: none;
+        }
+
+        .hero-title-wrap {
+            width: min(1140px, 92%);
+            margin-inline: auto;
+            min-height: 380px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-title-wrap h1 {
+            color: #ffffff;
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            line-height: 1;
+        }
+
+        .page-heading {
+            padding: 1.1rem 0 .10rem;
+        }
+
+        .page-heading h1 {
+            color: var(--azul-2);
+            font-size: clamp(2rem, 4.2vw, 3rem);
+            line-height: 1.1;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: .45rem;
+            background: rgba(255, 255, 255, .14);
+            border: 1px solid rgba(255, 255, 255, .28);
+            border-radius: 999px;
+            padding: .3rem .75rem;
+            font-size: .78rem;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            margin-bottom: .9rem;
+            font-weight: 700;
+        }
+
+        .hero-page h1 {
+            font-size: clamp(2rem, 4vw, 2.9rem);
+            margin-bottom: .4rem;
+        }
+
+        .hero-page p {
+            color: #dde8ff;
+            max-width: 66ch;
+        }
+
+        .crumb {
+            margin-top: .8rem;
+            color: #bdd2ff;
+            font-size: .9rem;
+        }
+
+        .hero-highlights {
+            margin-top: 1rem;
+            display: flex;
+            gap: .7rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-highlights span {
+            display: inline-flex;
+            align-items: center;
+            gap: .4rem;
+            background: rgba(8, 15, 28, .34);
+            border: 1px solid rgba(255, 255, 255, .22);
+            border-radius: 999px;
+            padding: .38rem .7rem;
+            color: #e9f1ff;
+            font-size: .84rem;
+            font-weight: 600;
+        }
+
+        .content {
+            padding: 3rem 0;
+            position: relative;
+        }
+
+        .content::before {
+            content: "";
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(1100px, 92%);
+            height: 220px;
+            border-radius: 24px;
+            background: linear-gradient(90deg, rgba(50, 93, 165, .09), rgba(35, 61, 105, .03));
+            z-index: -1;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.15fr .85fr;
+            gap: 1.4rem;
+            margin-bottom: 2rem;
+            align-items: start;
+        }
+
+        .box {
+            background: #fff;
+            border: 1px solid #d6e0ef;
+            border-radius: 18px;
+            padding: 1.35rem;
+            box-shadow: 0 12px 26px rgba(19, 38, 70, .08);
+            position: relative;
+        }
+
+        .box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 90px;
+            height: 4px;
+            border-radius: 18px 0 10px 0;
+            background: linear-gradient(90deg, var(--azul-1), #74a3f5);
+        }
+
+        .box h2 {
+            color: var(--azul-2);
+            margin-bottom: .7rem;
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+        }
+
+        .box p {
+            color: #364764;
+            margin-bottom: .7rem;
+        }
+
+        .box h3 {
+            color: var(--azul-2);
+            margin: .9rem 0 .5rem;
+            font-size: 1.15rem;
+        }
+
+        .bullet-list {
+            margin: .35rem 0 .9rem;
+            color: #364764;
+            display: grid;
+            gap: .35rem;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 1.15rem;
+            line-height: 1.45;
+        }
+
+        .bullet-list li::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: var(--azul-1);
+            position: absolute;
+            left: 0;
+            top: .5rem;
+        }
+
+        .about-main {
+            padding: 1.55rem;
+        }
+
+        .about-main h2 {
+            font-size: clamp(1.9rem, 3.8vw, 3rem);
+            line-height: 1.14;
+            margin-bottom: 1rem;
+        }
+
+        .intro-text {
+            font-size: 1.08rem;
+            line-height: 1.56;
+            color: #32445f;
+        }
+
+        .kpi-row {
+            margin: .9rem 0 1.1rem;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: .65rem;
+        }
+
+        .kpi-badge {
+            background: linear-gradient(145deg, #2f5a9e 0%, #244f91 100%);
+            border-radius: 14px;
+            padding: .65rem .72rem;
+            color: #fff;
+            box-shadow: 0 8px 16px rgba(26, 52, 94, .18);
+        }
+
+        .kpi-badge strong {
+            display: block;
+            font-size: 1.05rem;
+            line-height: 1.1;
+            margin-bottom: .25rem;
+        }
+
+        .kpi-badge span {
+            display: block;
+            font-size: .78rem;
+            line-height: 1.3;
+            color: #d9e8ff;
+        }
+
+        .info-block {
+            margin-top: .95rem;
+            border: 1px solid #d6e1f2;
+            border-left: 5px solid var(--azul-1);
+            border-radius: 14px;
+            background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+            padding: .95rem 1rem;
+        }
+
+        .info-block h3 {
+            margin-top: 0;
+            margin-bottom: .45rem;
+            font-size: 1.35rem;
+        }
+
+        .info-block p {
+            margin-bottom: .6rem;
+        }
+
+        .note {
+            margin-top: .35rem;
+            padding: .58rem .68rem;
+            border-radius: 10px;
+            background: rgba(47, 90, 158, .08);
+            border: 1px solid rgba(47, 90, 158, .16);
+        }
+
+        .photo {
+            border-radius: 18px;
+            overflow: hidden;
+            min-height: 320px;
+            box-shadow: 0 16px 32px rgba(29, 51, 88, .2);
+            position: sticky;
+            top: 96px;
+        }
+
+        .photo::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(19, 34, 63, 0) 55%, rgba(19, 34, 63, .58) 100%);
+            pointer-events: none;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo figcaption {
+            position: absolute;
+            left: 1rem;
+            right: 1rem;
+            bottom: .9rem;
+            color: #f4f8ff;
+            font-size: .92rem;
+            line-height: 1.35;
+            font-weight: 600;
+            z-index: 1;
+        }
+
+        .double-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .impact-strip {
+            margin: 0 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: .9rem;
+        }
+
+        .impact-item {
+            border-radius: 16px;
+            background: linear-gradient(150deg, #1f3d6f 0%, #2f5a9e 100%);
+            color: #fff;
+            padding: 1rem 1.05rem;
+            box-shadow: 0 12px 24px rgba(29, 51, 88, .2);
+        }
+
+        .impact-item strong {
+            display: block;
+            font-size: clamp(1.45rem, 4vw, 2rem);
+            line-height: 1;
+            margin-bottom: .32rem;
+        }
+
+        .impact-item span {
+            color: #d9e7ff;
+            font-size: .92rem;
+        }
+
+        .double-grid h3 {
+            color: var(--azul-2);
+            margin-bottom: .65rem;
+            font-size: 1.2rem;
+        }
+
+        .double-grid p {
+            color: #384a68;
+        }
+
+        .section-head {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .section-head small {
+            display: none;
+        }
+
+        .section-head h2 {
+            color: #20252f;
+            margin-top: .3rem;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+        }
+
+        .values {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.6rem 1.3rem;
+        }
+
+        .value-card {
+            background: transparent;
+            border: 0;
+            border-radius: 0;
+            padding: .4rem;
+            box-shadow: none;
+            text-align: center;
+            flex: 1 1 240px;
+            max-width: 280px;
+        }
+
+        .value-icon {
+            width: 148px;
+            height: 148px;
+            margin: 0 auto 1.2rem;
+            border-radius: 999px;
+            display: grid;
+            place-items: center;
+            background: #2f5a9e;
+            box-shadow: 0 12px 18px rgba(15, 21, 34, .08);
+        }
+
+        .value-card i {
+            color: #ffffff;
+            font-size: 3.1rem;
+        }
+
+        .value-card h3 {
+            color: #212733;
+            margin-bottom: .55rem;
+            font-size: clamp(1.7rem, 2.5vw, 2.05rem);
+            line-height: 1.18;
+        }
+
+        .value-card p {
+            color: #2b3445;
+            font-size: 1rem;
+            max-width: 26ch;
+            margin: 0 auto;
+            line-height: 1.45;
+        }
+
+        .value-card:hover {
+            transform: none;
+            border-color: transparent;
+            box-shadow: none;
+        }
+
+        .site-footer {
+            background: #0d1523;
+            color: #d6e2f6;
+            border-top: 4px solid var(--azul-1);
+            padding: 1.5rem 0 1rem;
+            margin-top: 1.4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .footer-brand h4 {
+            color: #ffffff;
+            font-size: 1.15rem;
+            margin-bottom: .35rem;
+        }
+
+        .footer-brand p,
+        .footer-block p {
+            margin: .2rem 0;
+            color: #c4d3ee;
+            font-size: .92rem;
+            line-height: 1.45;
+        }
+
+        .footer-block h5 {
+            color: #ffffff;
+            font-size: .95rem;
+            margin-bottom: .35rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+        }
+
+        .footer-copy {
+            margin-top: 1rem;
+            padding-top: .8rem;
+            border-top: 1px solid rgba(255, 255, 255, .14);
+            text-align: center;
+            color: #aebedd;
+            font-size: .86rem;
+        }
+
+        @media (max-width: 980px) {
+            .about-grid,
+            .double-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .photo {
+                position: relative;
+                top: 0;
+            }
+
+            .impact-strip {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .values {
+                justify-content: center;
+            }
+
+            .kpi-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .topbar .inner {
+                flex-direction: column;
+                padding: .8rem 0;
+            }
+
+            .menu {
+                justify-content: center;
+            }
+
+            .brand img {
+                width: 210px;
+                height: 58px;
+            }
+
+            .values {
+                gap: 1.2rem;
+            }
+
+            .value-card {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+
+            .impact-strip {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-highlights {
+                gap: .5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        body { opacity:0; transform:translateY(8px); transition:opacity .45s ease, transform .45s ease; }
+        body.loaded { opacity:1; transform:none; }
+        .reveal { opacity:0; transform:translateY(22px); transition:opacity .55s ease, transform .55s ease; }
+        .reveal.in-view { opacity:1; transform:none; }
+        @media (prefers-reduced-motion: reduce) {
+            * { animation:none !important; transition:none !important; }
+            body { opacity:1; transform:none; }
+            .reveal { opacity:1; transform:none; }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="container inner">
+            <a href="index.html" class="brand">
+                <img src="./imagenes/secciones/logo-damicor.jpeg" alt="Logo DAMICOR">
+            </a>
+
+            <nav class="menu">
+                <a href="index.html">Inicio</a>
+                <a class="active" href="nosotros.html">Nosotros</a>
+                <a href="remates.html">Remates</a>
+                <a href="preguntas.html">Preguntas</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-page" aria-label="Fondo institucional DAMICOR"></section>
+        <section class="page-heading">
+            <div class="container">
+                <h1>Nosotros</h1>
+            </div>
+        </section>
+        <section class="content">
+            <div class="container">
+                <div class="about-grid">
+                    <article class="box about-main">
+                        <h2>Centro de Arbitraje: Soluciones rapidas, seguras y efectivas</h2>
+                        <p class="intro-text">
+                            Somos un centro de arbitraje especializado en la resolucion de controversias entre
+                            particulares, ofreciendo una alternativa eficiente frente a la justicia tradicional.
+                        </p>
+                        <p class="intro-text">
+                            En nuestro centro de arbitraje, transformamos la incertidumbre en resultados claros,
+                            rapidos y ejecutables.
+                        </p>
+
+                        <div class="kpi-row">
+                            <article class="kpi-badge">
+                                <strong>2 dias</strong>
+                                <span>Admision e instalacion del tribunal arbitral</span>
+                            </article>
+                            <article class="kpi-badge">
+                                <strong>35 dias</strong>
+                                <span>Duracion promedio del proceso arbitral</span>
+                            </article>
+                            <article class="kpi-badge">
+                                <strong>3 meses</strong>
+                                <span>Ejecucion via remate (promedio)</span>
+                            </article>
+                        </div>
+
+                        <section class="info-block">
+                            <h3>Rapidez sin comprometer la seguridad juridica</h3>
+                            <p>
+                                Nuestros procesos destacan por su agilidad, garantizando siempre el debido proceso y la
+                                solidez legal en cada decision.
+                            </p>
+                            <ul class="bullet-list">
+                                <li>Admision de solicitud - demanda e instalacion del tribunal arbitral: promedio de 2 dias.</li>
+                                <li>Duracion total del proceso arbitral: aproximadamente 35 dias.</li>
+                            </ul>
+                            <p class="note">Esto permite a nuestros usuarios obtener soluciones en semanas, no en anos.</p>
+                        </section>
+
+                        <section class="info-block">
+                            <h3>Ejecucion efectiva del laudo arbitral</h3>
+                            <p>
+                                No solo resolvemos controversias: aseguramos que las decisiones se cumplan. Los laudos
+                                arbitrales emitidos pueden ejecutarse directamente en nuestra sede mediante:
+                            </p>
+                            <ul class="bullet-list">
+                                <li>Remate de bienes muebles e inmuebles.</li>
+                                <li>Inscripcion de adjudicaciones en Registros Publicos.</li>
+                                <li>Orden de lanzamiento de ocupantes en los inmuebles adjudicados.</li>
+                            </ul>
+                            <p class="note">
+                                El proceso de ejecucion via remate tiene una duracion promedio de 3 meses adicionales,
+                                tras lo cual se concreta la inscripcion y el lanzamiento correspondiente.
+                            </p>
+                        </section>
+
+                        <section class="info-block">
+                            <h3>Por que elegirnos?</h3>
+                            <ul class="bullet-list">
+                                <li>Procesos significativamente mas rapidos que la via judicial.</li>
+                                <li>Seguridad juridica garantizada.</li>
+                                <li>Ejecucion real y efectiva de los laudos.</li>
+                                <li>Acompanamiento especializado en todas las etapas.</li>
+                            </ul>
+                        </section>
+                    </article>
+
+                    <figure class="photo">
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=80" alt="Equipo legal DAMICOR" loading="lazy">
+                        <figcaption>Arbitraje con enfoque practico, seguridad juridica y ejecucion efectiva.</figcaption>
+                    </figure>
+                </div>
+
+                <div class="impact-strip">
+                    <article class="impact-item">
+                        <strong>2 dias</strong>
+                        <span>Admision e instalacion del tribunal arbitral</span>
+                    </article>
+                    <article class="impact-item">
+                        <strong>35 dias</strong>
+                        <span>Duracion promedio total del proceso arbitral</span>
+                    </article>
+                    <article class="impact-item">
+                        <strong>3 meses</strong>
+                        <span>Promedio adicional para ejecucion via remate</span>
+                    </article>
+                </div>
+
+                <div class="double-grid">
+                    <article class="box">
+                        <h3>MISION</h3>
+                        <p>
+                            Brindar servicios de arbitraje eficientes, agiles y con altos estandares juridicos,
+                            resolviendo controversias entre particulares en plazos cortos y garantizando la ejecucion
+                            efectiva de los laudos, a traves de un equipo especializado y procesos optimizados que
+                            priorizan la seguridad juridica y los resultados concretos.
+                        </p>
+                    </article>
+                    <article class="box">
+                        <h3>VISION</h3>
+                        <p>
+                            Convertirnos en el centro de arbitraje referente a nivel nacional, elegido por personas y
+                            empresas que buscan resolver sus controversias de manera rapida, segura y con resultados
+                            realmente ejecutables; consolidando un modelo de justicia privada donde cada decision no
+                            solo se emite, sino que se cumple de forma efectiva, reduciendo costos, tiempos e
+                            incertidumbre.
+                        </p>
+                    </article>
+                </div>
+
+                <div class="section-head">
+                    <small>Propuesta DAMICOR</small>
+                    <h2>Nuestros Valores</h2>
+                </div>
+
+                <div class="values">
+                    <article class="value-card">
+                        <div class="value-icon">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3>Rapidez real</h3>
+                        <p>Procesos arbitrales que concluyen en semanas, no en anos.</p>
+                    </article>
+                    <article class="value-card">
+                        <div class="value-icon">
+                            <i class="fa-solid fa-hammer"></i>
+                        </div>
+                        <h3>Ejecucion efectiva</h3>
+                        <p>Aseguramos el cumplimiento de los laudos con remates e inscripciones.</p>
+                    </article>
+                    <article class="value-card">
+                        <div class="value-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3>Seguridad juridica</h3>
+                        <p>Decisiones solidas, respaldadas por especialistas y debido proceso.</p>
+                    </article>
+                    <article class="value-card">
+                        <div class="value-icon">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <h3>Ahorro de costos y tiempo</h3>
+                        <p>Reducimos la carga y la demora del sistema judicial tradicional.</p>
+                    </article>
+                    <article class="value-card">
+                        <div class="value-icon">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h3>Resultados tangibles</h3>
+                        <p>No solo obtienes un laudo: obtienes una solucion ejecutable.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <article class="footer-brand">
+                    <h4>DAMICOR</h4>
+                    <p>Centro de arbitraje especializado en soluciones rapidas, seguras y efectivas.</p>
+                </article>
+                <article class="footer-block">
+                    <h5>Contacto</h5>
+                    <p>Telefonos: +51 920 541 682 | +51 901 620 888</p>
+                    <p>Correo: procesos@damicorperu.com</p>
+                </article>
+                <article class="footer-block">
+                    <h5>Datos bancarios</h5>
+                    <p>Cuenta corriente: [COMPLETAR]</p>
+                    <p>CCI: [COMPLETAR]</p>
+                </article>
+            </div>
+            <div class="footer-copy">&copy; 2026 DAMICOR. Todos los derechos reservados.</div>
+        </div>
+    </footer>
+    <script>
+        (function () {
+            document.body.classList.add('loaded');
+            var targets = document.querySelectorAll('main section, main article, main .section-title, main .content-card, main .value-card, main .about-card, main .feature-card, footer .footer-grid article, footer .footer-copy');
+            targets.forEach(function (el, i) {
+                el.classList.add('reveal');
+                el.style.transitionDelay = Math.min(i * 70, 420) + 'ms';
+            });
+            if (!('IntersectionObserver' in window)) {
+                targets.forEach(function (el) { el.classList.add('in-view'); });
+                return;
+            }
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.14 });
+            targets.forEach(function (el) { observer.observe(el); });
+        })();
+    </script>
+</body>
+
+</html>
+
+
+
+

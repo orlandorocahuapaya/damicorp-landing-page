@@ -1,0 +1,383 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Remates DAMICOR: recuperacion efectiva, rapida y ejecutable.">
+    <title>Remates | DAMICOR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Taviraj:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --azul-1:#2f5a9e; --azul-2:#2b4d7d; --oscuro:#0f1113; }
+        * { box-sizing:border-box; margin:0; padding:0; }
+        body { font-family:"Taviraj", serif; color:var(--oscuro); background:linear-gradient(180deg,#fff 0%,#f4f8ff 100%); opacity:0; transform:translateY(8px); transition:opacity .45s ease, transform .45s ease; }
+        body.loaded { opacity:1; transform:none; }
+        a { text-decoration:none; color:inherit; }
+        .container { width:min(1140px,92%); margin-inline:auto; }
+        .topbar { position:sticky; top:0; z-index:40; background:rgba(15,17,19,.92); backdrop-filter:blur(7px); border-bottom:1px solid rgba(255,255,255,.08); }
+        .topbar .inner { min-height:72px; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; animation:slideDown .55s ease both; }
+        .brand img { width:300px; height:80px; object-fit:contain; }
+        .menu { display:flex; gap:1rem; flex-wrap:wrap; }
+        .menu a { color:#f2f7ff; font-size:.9rem; text-transform:uppercase; font-weight:600; padding:.35rem .55rem; border-radius:999px; opacity:0; transform:translateY(-8px); animation:menuIn .45s ease forwards; }
+        .menu a:nth-child(1) { animation-delay:.10s; }
+        .menu a:nth-child(2) { animation-delay:.16s; }
+        .menu a:nth-child(3) { animation-delay:.22s; }
+        .menu a:nth-child(4) { animation-delay:.28s; }
+        .menu a:nth-child(5) { animation-delay:.34s; }
+        .menu a:hover, .menu a.active { background:rgba(255,255,255,.14); }
+
+        .hero-page { padding:0; min-height:380px; background:#0f4ea8 url("./imagenes/secciones/logo-damicor.jpeg") center/contain no-repeat; color:#fff; box-shadow:inset 0 -42px 70px rgba(0,0,0,.35), inset 0 24px 34px rgba(255,255,255,.05); position:relative; overflow:hidden; }
+        .hero-page::before { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg, rgba(4,15,40,.28) 0%, rgba(4,15,40,.42) 100%); }
+        .hero-page::after { content:""; position:absolute; inset:0; pointer-events:none; background-image: linear-gradient(150deg, rgba(255,255,255,.13) 10px, transparent 10px), linear-gradient(30deg, rgba(255,255,255,.09) 10px, transparent 10px), linear-gradient(150deg, transparent 24px, rgba(255,255,255,.11) 24px 36px, transparent 36px), linear-gradient(30deg, transparent 24px, rgba(255,255,255,.08) 24px 36px, transparent 36px); background-size: 84px 48px, 84px 48px, 84px 48px, 84px 48px; background-position: 0 0, 42px 24px, 0 0, 42px 24px; opacity:.36; animation:patternShift 18s linear infinite; }
+        .page-heading { padding:1.1rem 0 .35rem; }
+        .page-heading h1 { color:var(--azul-2); font-size:clamp(2rem,4.2vw,3rem); line-height:1.1; }
+
+        .remates { padding:2.2rem 0 3.5rem; }
+        .remates-layout { display:grid; gap:1rem; }
+        .content-card {
+            border-radius:16px;
+            background:#fff;
+            border:1px solid #d3dded;
+            box-shadow:0 10px 24px rgba(13,29,58,.08);
+            padding:1.1rem;
+        }
+        .content-card h2 { color:var(--azul-2); font-size:clamp(1.45rem,3vw,2rem); margin-bottom:.65rem; }
+        .content-card h3 { color:var(--azul-2); font-size:1.15rem; margin:.95rem 0 .45rem; }
+        .content-card p { color:#334866; margin-bottom:.6rem; line-height:1.6; }
+        .content-list { list-style:none; display:grid; gap:.35rem; margin:.45rem 0 .75rem; }
+        .content-list li { position:relative; padding-left:1rem; color:#2f415e; line-height:1.5; }
+        .content-list li::before { content:""; width:6px; height:6px; border-radius:999px; background:var(--azul-1); position:absolute; left:0; top:.55rem; }
+        .mail-link { color:var(--azul-1); font-weight:700; text-decoration:underline; }
+        .section-title { margin-top: .4rem; margin-bottom: .95rem; }
+        .section-title small { color:var(--azul-1); text-transform:uppercase; letter-spacing:.08em; font-weight:700; font-size:.78rem; }
+        .section-title h2 { margin-top:.35rem; font-size:clamp(1.4rem,3vw,2rem); color:var(--azul-2); }
+        .remates-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+        .remate-card { border-radius:16px; overflow:hidden; background:#fff; border:1px solid #d3dded; box-shadow:0 10px 24px rgba(13,29,58,.1); cursor:pointer; transition:transform .18s ease, box-shadow .18s ease; }
+        .remate-card:hover { transform:translateY(-3px); box-shadow:0 16px 30px rgba(13,29,58,.16); }
+        .remate-card img { width:100%; height:180px; object-fit:cover; display:block; }
+        .remate-body { padding:1rem; }
+        .remate-body h3 { color:var(--azul-2); font-size:1rem; margin:0; }
+        .timeline { list-style:none; display:grid; gap:.45rem; color:#31435f; font-size:.92rem; margin-bottom:.9rem; }
+        .btn { display:inline-flex; align-items:center; gap:.5rem; padding:.55rem .9rem; border-radius:999px; font-size:.88rem; font-weight:700; background:var(--azul-1); color:#fff; }
+        .modal-backdrop { position:fixed; inset:0; background:rgba(9,17,31,.62); display:none; align-items:center; justify-content:center; z-index:130; padding:1rem; opacity:0; transition:opacity .22s ease; }
+        .modal-backdrop.open { display:flex; }
+        .modal-backdrop.visible { opacity:1; }
+        .modal { width:min(620px,96%); background:#fff; border-radius:16px; border:1px solid #d3dded; box-shadow:0 20px 46px rgba(10,24,46,.28); overflow:hidden; transform:translateY(10px) scale(.97); opacity:0; transition:transform .24s ease, opacity .24s ease; }
+        .modal-backdrop.visible .modal { transform:translateY(0) scale(1); opacity:1; }
+        .modal-photo { width:100%; height:270px; object-fit:cover; display:block; }
+        .modal-body { padding:1rem 1rem 1.2rem; }
+        .modal-head { display:flex; justify-content:space-between; gap:.8rem; align-items:flex-start; margin-bottom:.7rem; }
+        .modal-title { color:var(--azul-2); font-size:1.08rem; line-height:1.35; margin:0; }
+        .close-modal { border:0; background:#e7effd; color:#1d3e73; border-radius:999px; width:34px; height:34px; font-size:1.1rem; cursor:pointer; }
+        .meta { color:#2f415e; font-size:.93rem; margin:.2rem 0 .85rem; }
+        .modal .timeline { margin:0; }
+        .reveal { opacity:0; transform:translateY(22px); transition:opacity .55s ease, transform .55s ease; }
+        .reveal.in-view { opacity:1; transform:none; }
+        @keyframes slideDown {
+            from { opacity:0; transform:translateY(-12px); }
+            to { opacity:1; transform:none; }
+        }
+        @keyframes menuIn {
+            from { opacity:0; transform:translateY(-8px); }
+            to { opacity:1; transform:none; }
+        }
+        @keyframes patternShift {
+            0% { background-position:0 0, 42px 24px, 0 0, 42px 24px; }
+            100% { background-position:84px 0, 126px 24px, 84px 0, 126px 24px; }
+        }
+
+        .site-footer { background:#0d1523; color:#d6e2f6; border-top:4px solid var(--azul-1); padding:1.5rem 0 1rem; margin-top:1.4rem; }
+        .footer-grid { display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:1rem; }
+        .footer-brand h4 { color:#fff; font-size:1.15rem; margin-bottom:.35rem; }
+        .footer-brand p, .footer-block p { margin:.2rem 0; color:#c4d3ee; font-size:.92rem; line-height:1.45; }
+        .footer-block h5 { color:#fff; font-size:.95rem; margin-bottom:.35rem; text-transform:uppercase; letter-spacing:.04em; }
+        .footer-copy { margin-top:1rem; padding-top:.8rem; border-top:1px solid rgba(255,255,255,.14); text-align:center; color:#aebedd; font-size:.86rem; }
+
+        @media (max-width:640px) {
+            .topbar .inner { flex-direction:column; padding:.8rem 0; }
+            .menu { justify-content:center; }
+            .brand img { width:210px; height:58px; }
+            .footer-grid { grid-template-columns:1fr; }
+        }
+        @media (max-width:980px) {
+            .remates-grid { grid-template-columns:1fr 1fr; }
+        }
+        @media (max-width:640px) {
+            .remates-grid { grid-template-columns:1fr; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * { animation:none !important; transition:none !important; }
+            body { opacity:1; transform:none; }
+            .reveal { opacity:1; transform:none; }
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="container inner">
+            <a href="index.html" class="brand"><img src="./imagenes/secciones/logo-damicor.jpeg" alt="Logo DAMICOR"></a>
+            <nav class="menu">
+                <a href="index.html">Inicio</a>
+                <a href="nosotros.html">Nosotros</a>
+                <a class="active" href="remates.html">Remates</a>
+                <a href="preguntas.html">Preguntas</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-page" aria-label="Fondo institucional DAMICOR"></section>
+        <section class="page-heading">
+            <div class="container">
+                <h1>Remates</h1>
+            </div>
+        </section>
+
+        <section class="remates">
+            <div class="container">
+                <div class="section-title">
+                    <small>Remates en curso</small>
+                    <h2>Convocatorias vigentes</h2>
+                </div>
+                <div id="remates-grid" class="remates-grid"></div>
+
+                <div class="section-title">
+                    <small>Informacion adicional</small>
+                    <h2>Detalles para participar</h2>
+                </div>
+                <div class="remates-layout">
+                    <article class="content-card">
+                        <h2>Recuperacion efectiva, rapida y ejecutable</h2>
+                        <p>En DAMICOR sabemos que un laudo solo tiene valor cuando realmente se cumple. Por eso contamos con un sistema de remates pensado para convertir una decision arbitral en recuperacion concreta de activos, de forma ordenada y segura.</p>
+
+                        <h3>Menos espera, mas resultados</h3>
+                        <p>Ayudamos a que nuestros clientes reduzcan incertidumbre y recuperen liquidez en menor tiempo, con acompanamiento profesional durante todo el proceso.</p>
+
+                        <h3>Nos encargamos de todo el proceso</h3>
+                        <p>Para que tu equipo se enfoque en su actividad principal, DAMICOR gestiona de inicio a fin:</p>
+                        <ul class="content-list">
+                            <li>Identificacion y aseguramiento de bienes del deudor o demandado.</li>
+                            <li>Organizacion y gestion completa del remate.</li>
+                            <li>Adjudicacion al mejor postor o al demandante, segun corresponda.</li>
+                            <li>Inscripcion de la adjudicacion en Registros Publicos.</li>
+                        </ul>
+                    </article>
+
+                    <article class="content-card">
+                        <h2>Como participar en nuestros remates</h2>
+                        <p>Queremos que participar sea simple, transparente y seguro. Todas las convocatorias se realizan con reglas claras e igualdad de oportunidades para cada postor.</p>
+
+                        <h3>Quienes pueden participar</h3>
+                        <ul class="content-list">
+                            <li>Personas naturales con capacidad legal para contratar.</li>
+                            <li>Personas juridicas debidamente representadas.</li>
+                        </ul>
+
+                        <h3>Que necesitas para inscribirte</h3>
+                        <p>Envianos al correo <a class="mail-link" href="mailto:procesos@damicorperu.com">procesos@damicorperu.com</a>, 1 (un) dia antes del remate, la siguiente documentacion:</p>
+                        <ul class="content-list">
+                            <li>Registro como postor ante DAMICOR y constancia de deposito por arancel de participacion.</li>
+                            <li>Documento de identidad vigente (o poderes si actuas en representacion). En persona juridica: partida registral de representacion y RUC.</li>
+                            <li>Deposito de garantia (oblaje) equivalente al 10% del valor de tasacion del bien en la cuenta corriente de DAMICOR.</li>
+                        </ul>
+                        <p>Una vez verificados los pagos, recibiras el link de ingreso. Recomendamos conectarte 10 minutos antes de la hora programada.</p>
+
+                        <h3>Condiciones economicas</h3>
+                        <ul class="content-list">
+                            <li>El deposito de garantia respalda la seriedad de cada propuesta.</li>
+                            <li>El saldo del precio adjudicado debe pagarse dentro de 3 (tres) dias habiles luego del remate; de no hacerlo, se pierde el oblaje.</li>
+                            <li>En cada convocatoria se detallan las condiciones especificas del bien rematado.</li>
+                        </ul>
+
+                        <h3>Transparencia y seguridad</h3>
+                        <ul class="content-list">
+                            <li>Cada remate se realiza bajo reglas previamente publicadas.</li>
+                            <li>Todos los postores participan en igualdad de condiciones.</li>
+                            <li>Los resultados son formales, verificables y con respaldo legal.</li>
+                            <li>Al postor no adjudicado se le devuelve el integro del oblaje.</li>
+                        </ul>
+
+                        <h3>Por que participar</h3>
+                        <ul class="content-list">
+                            <li>Acceso a oportunidades de adquisicion con precios competitivos.</li>
+                            <li>Procesos agiles y con menor incertidumbre frente a otras vias.</li>
+                            <li>Seguridad juridica en la adjudicacion e inscripcion del bien.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <article class="footer-brand">
+                    <h4>DAMICOR</h4>
+                    <p>Centro de arbitraje especializado en soluciones rapidas, seguras y efectivas.</p>
+                </article>
+                <article class="footer-block">
+                    <h5>Contacto</h5>
+                    <p>Telefonos: +51 920 541 682 | +51 901 620 888</p>
+                    <p>Correo: procesos@damicorperu.com</p>
+                </article>
+                <article class="footer-block">
+                    <h5>Datos bancarios</h5>
+                    <p>Cuenta corriente: [COMPLETAR]</p>
+                    <p>CCI: [COMPLETAR]</p>
+                </article>
+            </div>
+            <div class="footer-copy">&copy; 2026 DAMICOR. Todos los derechos reservados.</div>
+        </div>
+    </footer>
+    <div id="remate-modal" class="modal-backdrop" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-label="Detalle de remate">
+            <img id="modal-foto" class="modal-photo" src="" alt="Foto remate">
+            <div class="modal-body">
+                <div class="modal-head">
+                    <h3 id="modal-title" class="modal-title"></h3>
+                    <button id="close-modal" class="close-modal" type="button" aria-label="Cerrar">&times;</button>
+                </div>
+                <p id="modal-meta" class="meta"></p>
+                <ul id="modal-tasaciones" class="timeline"></ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        (function () {
+            var grid = document.getElementById('remates-grid');
+            var modal = document.getElementById('remate-modal');
+            var closeModalBtn = document.getElementById('close-modal');
+            var modalFoto = document.getElementById('modal-foto');
+            var modalTitle = document.getElementById('modal-title');
+            var modalMeta = document.getElementById('modal-meta');
+            var modalTasaciones = document.getElementById('modal-tasaciones');
+            if (!grid) return;
+            document.body.classList.add('loaded');
+
+            var revealObserver = null;
+            function applyRevealAnimation() {
+                var targets = document.querySelectorAll('main section, main article, main .section-title, main .content-card, main .remate-card, .hero-page, .page-heading, .footer-brand, .footer-block, .footer-copy');
+                targets.forEach(function (el, index) {
+                    if (!el.classList.contains('reveal')) {
+                        el.classList.add('reveal');
+                    }
+                    if (!el.style.transitionDelay) {
+                        el.style.transitionDelay = Math.min(index * 70, 420) + 'ms';
+                    }
+                });
+
+                if (!('IntersectionObserver' in window)) {
+                    targets.forEach(function (el) { el.classList.add('in-view'); });
+                    return;
+                }
+
+                if (!revealObserver) {
+                    revealObserver = new IntersectionObserver(function (entries) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('in-view');
+                                revealObserver.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.14 });
+                }
+
+                targets.forEach(function (el) {
+                    if (!el.classList.contains('in-view')) {
+                        revealObserver.observe(el);
+                    }
+                });
+            }
+
+            function formatDate(value) {
+                var date = new Date(value + 'T00:00:00');
+                if (isNaN(date.getTime())) return value;
+                return date.toLocaleDateString('es-PE', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+            }
+
+            function formatMoney(value) {
+                return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(Number(value || 0));
+            }
+
+            function escapeHtml(value) {
+                return String(value || '')
+                    .replaceAll('&', '&amp;')
+                    .replaceAll('<', '&lt;')
+                    .replaceAll('>', '&gt;')
+                    .replaceAll('"', '&quot;')
+                    .replaceAll("'", '&#39;');
+            }
+
+            function openModal(item) {
+                modalFoto.src = item.foto || '';
+                modalTitle.textContent = item.ubicacion_inmueble || '';
+                modalMeta.textContent = 'Fecha de expediente: ' + formatDate(item.fecha_expediente || '');
+                modalTasaciones.innerHTML = (item.tasaciones || []).map(function (t) {
+                    return '<li>' + formatDate(t.fecha) + ' - Precio base: ' + formatMoney(t.precio_base) + '</li>';
+                }).join('');
+                modal.classList.add('open');
+                modal.setAttribute('aria-hidden', 'false');
+                requestAnimationFrame(function () {
+                    modal.classList.add('visible');
+                });
+            }
+
+            function closeModal() {
+                modal.classList.remove('visible');
+                setTimeout(function () {
+                    modal.classList.remove('open');
+                    modal.setAttribute('aria-hidden', 'true');
+                }, 220);
+            }
+
+            closeModalBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', function (e) {
+                if (e.target === modal) closeModal();
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+            });
+            applyRevealAnimation();
+
+            fetch('/api/remates-publicos')
+                .then(function (r) { return r.json(); })
+                .then(function (items) {
+                    if (!Array.isArray(items) || items.length === 0) {
+                        grid.innerHTML = '<article class="content-card"><p>No hay remates publicados por el momento.</p></article>';
+                        return;
+                    }
+
+                    grid.innerHTML = items.map(function (item, index) {
+                        return '' +
+                            '<article class="remate-card" data-remate-index="' + index + '">' +
+                                '<img src="' + escapeHtml(item.foto) + '" alt="Remate" loading="lazy">' +
+                                '<div class="remate-body">' +
+                                    '<h3>' + escapeHtml(item.ubicacion_inmueble) + '</h3>' +
+                                '</div>' +
+                            '</article>';
+                    }).join('');
+
+                    grid.querySelectorAll('.remate-card').forEach(function (card) {
+                        card.addEventListener('click', function () {
+                            var idx = Number(card.getAttribute('data-remate-index'));
+                            if (!Number.isNaN(idx) && items[idx]) {
+                                openModal(items[idx]);
+                            }
+                        });
+                    });
+                    applyRevealAnimation();
+                })
+                .catch(function () {
+                    grid.innerHTML = '<article class="content-card"><p>No se pudo cargar el listado de remates.</p></article>';
+                });
+        })();
+    </script>
+</body>
+</html>
+
+
+
+
