@@ -21,26 +21,26 @@ Route::get('/index.html/{extra}', function () {
     return redirect('/', 301);
 })->where('extra', '.*');
 
-Route::get('/nosotros.html', function () {
+Route::get('/nosotros', function () {
     return response()->file(public_path('nosotros.html'));
 });
 
-Route::get('/remates.html', function () {
+Route::get('/remates', function () {
     return response()->file(public_path('remates.html'));
 });
 
-Route::get('/preguntas.html', function () {
+Route::get('/preguntas', function () {
     return response()->file(public_path('preguntas.html'));
 });
 
-Route::get('/contacto.html', function () {
+Route::get('/contacto', function () {
     return response()->file(public_path('contacto.html'));
 });
 
-Route::redirect('/nosotros', '/nosotros.html', 301);
-Route::redirect('/remates', '/remates.html', 301);
-Route::redirect('/preguntas', '/preguntas.html', 301);
-Route::redirect('/contacto', '/contacto.html', 301);
+Route::redirect('/nosotros.html', '/nosotros', 301);
+Route::redirect('/remates.html', '/remates', 301);
+Route::redirect('/preguntas.html', '/preguntas', 301);
+Route::redirect('/contacto.html', '/contacto', 301);
 
 Route::post('/contacto/enviar', [ContactController::class, 'send']);
 Route::get('/api/remates-publicos', [PublicRemateController::class, 'index'])->name('public.remates.json');
