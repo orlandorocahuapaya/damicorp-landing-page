@@ -22,8 +22,8 @@ RUN composer install --no-dev --prefer-dist --no-interaction --no-progress --opt
 COPY . .
 
 # Permisos para Laravel
-RUN mkdir -p storage bootstrap/cache \
- && chmod -R ug+rwX storage bootstrap/cache
+RUN mkdir -p storage bootstrap/cache public/uploads/remates \
+ && chmod -R ug+rwX storage bootstrap/cache public/uploads
 
 # Puerto de la app
 EXPOSE 8080
