@@ -13,6 +13,10 @@ Route::get('/', function () {
     return redirect('/index.html');
 });
 
+Route::get('/index.html/{extra}', function () {
+    return redirect('/index.html', 301);
+})->where('extra', '.*');
+
 Route::post('/contacto/enviar', [ContactController::class, 'send']);
 Route::get('/api/remates-publicos', [PublicRemateController::class, 'index'])->name('public.remates.json');
 
