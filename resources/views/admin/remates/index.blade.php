@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gestion de Remates | DAMICOR</title>
+    <title>Gestión de Remates | DAMICOR</title>
     <style>
         body{font-family:Arial,sans-serif;margin:0;background:#f4f7fd;color:#10233f}
         .wrap{width:min(1100px,94%);margin:22px auto}
@@ -28,12 +28,12 @@
 <body>
     <div class="wrap">
         <div class="head">
-            <h1>Gestion de remates</h1>
+            <h1>Gestión de remates</h1>
             <div class="actions">
                 <a class="btn" href="{{ route('admin.remates.create') }}">Nuevo remate</a>
                 <form method="post" action="{{ route('admin.remates.logout') }}">
                     @csrf
-                    <button class="btn alt" type="submit">Cerrar sesion</button>
+                    <button class="btn alt" type="submit">Cerrar sesión</button>
                 </form>
             </div>
         </div>
@@ -46,8 +46,8 @@
             <thead>
             <tr>
                 <th>Foto</th>
-                <th>Numero expediente</th>
-                <th>Ubicacion inmueble</th>
+                <th>Número expediente</th>
+                <th>Ubicación inmueble</th>
                 <th>Tasaciones</th>
                 <th>Acciones</th>
             </tr>

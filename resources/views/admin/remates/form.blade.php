@@ -31,7 +31,7 @@
             @endif
             <div class="grid">
                 <div>
-                    <label for="numero_expediente">Numero de expediente</label>
+                    <label for="numero_expediente">Número de expediente</label>
                     <input id="numero_expediente" name="numero_expediente" type="text" value="{{ old('numero_expediente', $remate?->numero_expediente) }}" placeholder="EXP. 007-2025" required>
                     @error('numero_expediente') <p class="err">{{ $message }}</p> @enderror
                 </div>
@@ -41,7 +41,7 @@
                     @error('foto') <p class="err">{{ $message }}</p> @enderror
                 </div>
                 <div class="full">
-                    <label for="ubicacion_inmueble">Ubicacion del inmueble</label>
+                    <label for="ubicacion_inmueble">Ubicación del inmueble</label>
                     <input id="ubicacion_inmueble" name="ubicacion_inmueble" type="text" value="{{ old('ubicacion_inmueble', $remate?->ubicacion_inmueble) }}" required>
                     @error('ubicacion_inmueble') <p class="err">{{ $message }}</p> @enderror
                 </div>
@@ -75,7 +75,7 @@
             @error('tasaciones.*.fecha') <p class="err">{{ $message }}</p> @enderror
             @error('tasaciones.*.hora') <p class="err">{{ $message }}</p> @enderror
 
-            <button type="button" id="add-tasacion" class="btn alt">Agregar tasacion</button>
+            <button type="button" id="add-tasacion" class="btn alt">Agregar tasación</button>
 
             <div class="actions">
                 <button class="btn" type="submit">Guardar</button>
