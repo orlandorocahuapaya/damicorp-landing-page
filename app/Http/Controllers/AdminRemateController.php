@@ -15,7 +15,7 @@ class AdminRemateController extends Controller
     {
         $remates = Remate::query()
             ->with('tasaciones')
-            ->orderByDesc('fecha_expediente')
+            ->orderByDesc('id')
             ->paginate(12);
 
         return view('admin.remates.index', compact('remates'));
@@ -25,7 +25,7 @@ class AdminRemateController extends Controller
     {
         return view('admin.remates.form', [
             'remate' => null,
-            'tasaciones' => [['precio_base' => '', 'fecha' => '']],
+            'tasaciones' => [['precio_base' => '', 'fecha' => '', 'hora' => '16:00']],
             'action' => route('admin.remates.store'),
             'method' => 'POST',
         ]);
@@ -38,7 +38,7 @@ class AdminRemateController extends Controller
         DB::transaction(function () use ($data, $request): void {
             $remate = Remate::create([
                 'foto_path' => $this->storePhoto($request),
-                'fecha_expediente' => $data['fecha_expediente'],
+                'numero_expediente' => $data['numero_expediente'],
                 'ubicacion_inmueble' => $data['ubicacion_inmueble'],
             ]);
 
@@ -59,6 +59,7 @@ class AdminRemateController extends Controller
             'tasaciones' => $remate->tasaciones->map(fn ($t) => [
                 'precio_base' => number_format((float) $t->precio_base, 2, '.', ''),
                 'fecha' => optional($t->fecha)->format('Y-m-d'),
+                'hora' => $t->hora ? substr((string) $t->hora, 0, 5) : '16:00',
             ])->values()->all(),
             'action' => route('admin.remates.update', $remate),
             'method' => 'PUT',
@@ -71,7 +72,7 @@ class AdminRemateController extends Controller
 
         DB::transaction(function () use ($data, $request, $remate): void {
             $payload = [
-                'fecha_expediente' => $data['fecha_expediente'],
+                'numero_expediente' => $data['numero_expediente'],
                 'ubicacion_inmueble' => $data['ubicacion_inmueble'],
             ];
 
@@ -113,11 +114,12 @@ class AdminRemateController extends Controller
 
         return $request->validate([
             'foto' => $photoRules,
-            'fecha_expediente' => ['required', 'date'],
+            'numero_expediente' => ['required', 'string', 'max:30'],
             'ubicacion_inmueble' => ['required', 'string', 'max:255'],
             'tasaciones' => ['required', 'array', 'min:1'],
             'tasaciones.*.precio_base' => ['required', 'numeric', 'min:0'],
             'tasaciones.*.fecha' => ['required', 'date'],
+            'tasaciones.*.hora' => ['required', 'date_format:H:i'],
         ]);
     }
 

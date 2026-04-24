@@ -12,7 +12,7 @@
         .full{grid-column:1/-1}
         label{display:block;font-weight:700;font-size:.9rem;margin-bottom:6px}
         input{width:100%;padding:10px;border:1px solid #c9d6eb;border-radius:10px}
-        .row{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end;margin-bottom:10px}
+        .row{display:grid;grid-template-columns:1fr 1fr 180px auto;gap:10px;align-items:end;margin-bottom:10px}
         .btn{background:#214f95;color:#fff;padding:10px 13px;border-radius:10px;text-decoration:none;font-weight:700;border:0;cursor:pointer}
         .btn.alt{background:#6b7e99}
         .actions{display:flex;gap:10px;margin-top:16px}
@@ -31,9 +31,9 @@
             @endif
             <div class="grid">
                 <div>
-                    <label for="fecha_expediente">Fecha de expediente</label>
-                    <input id="fecha_expediente" name="fecha_expediente" type="date" value="{{ old('fecha_expediente', optional($remate?->fecha_expediente)->format('Y-m-d')) }}" required>
-                    @error('fecha_expediente') <p class="err">{{ $message }}</p> @enderror
+                    <label for="numero_expediente">Numero de expediente</label>
+                    <input id="numero_expediente" name="numero_expediente" type="text" value="{{ old('numero_expediente', $remate?->numero_expediente) }}" placeholder="EXP. 007-2025" required>
+                    @error('numero_expediente') <p class="err">{{ $message }}</p> @enderror
                 </div>
                 <div>
                     <label for="foto">Foto del remate {{ $remate ? '(opcional al editar)' : '' }}</label>
@@ -62,6 +62,10 @@
                             <label>Fecha</label>
                             <input type="date" name="tasaciones[{{ $index }}][fecha]" value="{{ $tasacion['fecha'] ?? '' }}" required>
                         </div>
+                        <div>
+                            <label>Hora</label>
+                            <input type="time" name="tasaciones[{{ $index }}][hora]" value="{{ $tasacion['hora'] ?? '16:00' }}" required>
+                        </div>
                         <button type="button" class="btn alt remove-row">Quitar</button>
                     </div>
                 @endforeach
@@ -69,6 +73,7 @@
             @error('tasaciones') <p class="err">{{ $message }}</p> @enderror
             @error('tasaciones.*.precio_base') <p class="err">{{ $message }}</p> @enderror
             @error('tasaciones.*.fecha') <p class="err">{{ $message }}</p> @enderror
+            @error('tasaciones.*.hora') <p class="err">{{ $message }}</p> @enderror
 
             <button type="button" id="add-tasacion" class="btn alt">Agregar tasacion</button>
 
@@ -89,8 +94,10 @@
             rows.forEach((row, i) => {
                 const price = row.querySelector('input[name*="[precio_base]"]');
                 const date = row.querySelector('input[name*="[fecha]"]');
+                const hour = row.querySelector('input[name*="[hora]"]');
                 price.name = `tasaciones[${i}][precio_base]`;
                 date.name = `tasaciones[${i}][fecha]`;
+                hour.name = `tasaciones[${i}][hora]`;
             });
         }
 
@@ -118,6 +125,10 @@
                 <div>
                     <label>Fecha</label>
                     <input type="date" name="tasaciones[${idx}][fecha]" required>
+                </div>
+                <div>
+                    <label>Hora</label>
+                    <input type="time" name="tasaciones[${idx}][hora]" value="16:00" required>
                 </div>
                 <button type="button" class="btn alt remove-row">Quitar</button>
             `;

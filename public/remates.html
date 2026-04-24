@@ -15,7 +15,7 @@
         body.loaded { opacity:1; transform:none; }
         a { text-decoration:none; color:inherit; }
         .container { width:min(1140px,92%); margin-inline:auto; }
-        .topbar { position:sticky; top:0; z-index:40; background:rgba(15,17,19,.92); backdrop-filter:blur(7px); border-bottom:1px solid rgba(255,255,255,.08); }
+        .topbar { position:sticky; top:0; z-index:40; background:#004AAD; backdrop-filter:blur(7px); border-bottom:1px solid rgba(255,255,255,.08); }
         .topbar .inner { min-height:72px; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; animation:slideDown .55s ease both; }
         .brand img { width:300px; height:80px; object-fit:contain; }
         .menu { display:flex; gap:1rem; flex-wrap:wrap; }
@@ -304,6 +304,25 @@
                 return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(Number(value || 0));
             }
 
+            function formatTime(value) {
+                var text = String(value || '').trim();
+                if (!text) return '';
+                var hhmm = text.length >= 5 ? text.slice(0, 5) : text;
+                var parts = hhmm.split(':');
+                if (parts.length !== 2) return text;
+                var hour = Number(parts[0]);
+                var minute = parts[1];
+                if (Number.isNaN(hour)) return text;
+                var suffix = hour >= 12 ? 'pm' : 'am';
+                var displayHour = hour % 12 || 12;
+                return displayHour + ':' + minute + ' ' + suffix;
+            }
+
+            function remateLabel(index) {
+                var labels = ['Primer', 'Segundo', 'Tercer', 'Cuarto', 'Quinto', 'Sexto', 'Septimo', 'Octavo', 'Noveno', 'Decimo'];
+                return labels[index] || ('Remate ' + (index + 1));
+            }
+
             function escapeHtml(value) {
                 return String(value || '')
                     .replaceAll('&', '&amp;')
@@ -316,9 +335,9 @@
             function openModal(item) {
                 modalFoto.src = item.foto || '';
                 modalTitle.textContent = item.ubicacion_inmueble || '';
-                modalMeta.textContent = 'Fecha de expediente: ' + formatDate(item.fecha_expediente || '');
-                modalTasaciones.innerHTML = (item.tasaciones || []).map(function (t) {
-                    return '<li>' + formatDate(t.fecha) + ' - Precio base: ' + formatMoney(t.precio_base) + '</li>';
+                modalMeta.textContent = 'Numero de expediente: ' + (item.numero_expediente || '');
+                modalTasaciones.innerHTML = (item.tasaciones || []).map(function (t, index) {
+                    return '<li>' + remateLabel(index) + ' remate - ' + formatDate(t.fecha) + ' - ' + formatTime(t.hora) + ' - Precio base: ' + formatMoney(t.precio_base) + '</li>';
                 }).join('');
                 modal.classList.add('open');
                 modal.setAttribute('aria-hidden', 'false');

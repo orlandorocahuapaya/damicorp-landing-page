@@ -13,6 +13,7 @@ class Tasacion extends Model
         'remate_id',
         'precio_base',
         'fecha',
+        'hora',
     ];
 
     protected $casts = [

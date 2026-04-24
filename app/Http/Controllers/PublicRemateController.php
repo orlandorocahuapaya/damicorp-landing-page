@@ -11,17 +11,18 @@ class PublicRemateController extends Controller
     {
         $remates = Remate::query()
             ->with('tasaciones')
-            ->orderByDesc('fecha_expediente')
+            ->orderByDesc('id')
             ->get()
             ->map(function (Remate $remate): array {
                 return [
                     'id' => $remate->id,
                     'foto' => $remate->foto_path,
-                    'fecha_expediente' => optional($remate->fecha_expediente)->format('Y-m-d'),
+                    'numero_expediente' => $remate->numero_expediente,
                     'ubicacion_inmueble' => $remate->ubicacion_inmueble,
                     'tasaciones' => $remate->tasaciones->map(fn ($tasacion): array => [
                         'precio_base' => number_format((float) $tasacion->precio_base, 2, '.', ''),
                         'fecha' => optional($tasacion->fecha)->format('Y-m-d'),
+                        'hora' => substr((string) $tasacion->hora, 0, 5),
                     ])->values()->all(),
                 ];
             })->values();
