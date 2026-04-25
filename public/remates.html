@@ -55,7 +55,7 @@
         .remates-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
         .remate-card { border-radius:16px; overflow:hidden; background:#fff; border:1px solid #d3dded; box-shadow:0 10px 24px rgba(13,29,58,.1); cursor:pointer; transition:transform .18s ease, box-shadow .18s ease; }
         .remate-card:hover { transform:translateY(-3px); box-shadow:0 16px 30px rgba(13,29,58,.16); }
-        .remate-card img { width:100%; height:180px; object-fit:cover; display:block; }
+        .remate-card img { width:100%; height:180px; object-fit:contain; object-position:center; background:#eef3fb; display:block; }
         .remate-body { padding:1rem; }
         .remate-body h3 { color:var(--azul-2); font-size:1rem; margin:0; }
         .timeline { list-style:none; display:grid; gap:.45rem; color:#31435f; font-size:.92rem; margin-bottom:.9rem; }
@@ -65,7 +65,7 @@
         .modal-backdrop.visible { opacity:1; }
         .modal { width:min(620px,96%); background:#fff; border-radius:16px; border:1px solid #d3dded; box-shadow:0 20px 46px rgba(10,24,46,.28); overflow:hidden; transform:translateY(10px) scale(.97); opacity:0; transition:transform .24s ease, opacity .24s ease; }
         .modal-backdrop.visible .modal { transform:translateY(0) scale(1); opacity:1; }
-        .modal-photo { width:100%; height:270px; object-fit:cover; display:block; }
+        .modal-photo { width:100%; height:270px; object-fit:contain; object-position:center; background:#eef3fb; display:block; }
         .modal-body { padding:1rem 1rem 1.2rem; }
         .modal-head { display:flex; justify-content:space-between; gap:.8rem; align-items:flex-start; margin-bottom:.7rem; }
         .modal-title { color:var(--azul-2); font-size:1.08rem; line-height:1.35; margin:0; }
