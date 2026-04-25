@@ -15,6 +15,6 @@ class Remate extends Model
 
     public function tasaciones(): HasMany
     {
-        return $this->hasMany(Tasacion::class)->orderByDesc('fecha');
+        return $this->hasMany(Tasacion::class)->orderBy('id');
     }
 }
