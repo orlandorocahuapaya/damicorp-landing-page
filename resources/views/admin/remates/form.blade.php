@@ -45,6 +45,19 @@
                     <input id="ubicacion_inmueble" name="ubicacion_inmueble" type="text" value="{{ old('ubicacion_inmueble', $remate?->ubicacion_inmueble) }}" required>
                     @error('ubicacion_inmueble') <p class="err">{{ $message }}</p> @enderror
                 </div>
+                <div>
+                    <label for="tasacion">Tasacion</label>
+                    <input id="tasacion" name="tasacion" type="number" step="0.01" min="0" value="{{ old('tasacion', $remate?->tasacion) }}" required>
+                    @error('tasacion') <p class="err">{{ $message }}</p> @enderror
+                </div>
+                <div>
+                    <label for="tasacion_moneda">Moneda de tasacion</label>
+                    <select id="tasacion_moneda" name="tasacion_moneda" required>
+                        <option value="PEN" @selected(old('tasacion_moneda', $remate?->tasacion_moneda ?? 'PEN') === 'PEN')>Soles (PEN)</option>
+                        <option value="USD" @selected(old('tasacion_moneda', $remate?->tasacion_moneda ?? 'PEN') === 'USD')>Dolares (USD)</option>
+                    </select>
+                    @error('tasacion_moneda') <p class="err">{{ $message }}</p> @enderror
+                </div>
             </div>
 
             <h3>Tasaciones</h3>

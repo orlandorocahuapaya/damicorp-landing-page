@@ -11,6 +11,8 @@ class Remate extends Model
         'foto_path',
         'numero_expediente',
         'ubicacion_inmueble',
+        'tasacion',
+        'tasacion_moneda',
     ];
 
     public function tasaciones(): HasMany

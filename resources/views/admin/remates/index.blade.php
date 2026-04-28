@@ -48,6 +48,7 @@
                 <th>Foto</th>
                 <th>Número expediente</th>
                 <th>Ubicación inmueble</th>
+                <th>Tasacion</th>
                 <th>Tasaciones</th>
                 <th>Acciones</th>
             </tr>
@@ -62,6 +63,7 @@
                     </td>
                     <td>{{ $remate->numero_expediente }}</td>
                     <td>{{ $remate->ubicacion_inmueble }}</td>
+                    <td>{{ ($remate->tasacion_moneda ?? 'PEN') === 'USD' ? 'US$' : 'S/' }} {{ number_format((float)$remate->tasacion,2) }}</td>
                     <td>
                         @foreach($remate->tasaciones as $tasacion)
                             <div class="muted">{{ optional($tasacion->fecha)->format('d/m/Y') }} {{ substr((string)$tasacion->hora,0,5) }} - {{ ($tasacion->moneda ?? 'PEN') === 'USD' ? 'US$' : 'S/' }} {{ number_format((float)$tasacion->precio_base,2) }}</div>
@@ -79,7 +81,7 @@
                     </td>
                 </tr>
             @empty
-                <tr><td colspan="5">No hay remates registrados.</td></tr>
+                <tr><td colspan="6">No hay remates registrados.</td></tr>
             @endforelse
             </tbody>
         </table>

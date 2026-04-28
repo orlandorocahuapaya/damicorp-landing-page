@@ -19,6 +19,8 @@ class PublicRemateController extends Controller
                     'foto' => $remate->foto_path,
                     'numero_expediente' => $remate->numero_expediente,
                     'ubicacion_inmueble' => $remate->ubicacion_inmueble,
+                    'tasacion' => number_format((float) $remate->tasacion, 2, '.', ''),
+                    'tasacion_moneda' => $remate->tasacion_moneda ?: 'PEN',
                     'tasaciones' => $remate->tasaciones->map(fn ($tasacion): array => [
                         'precio_base' => number_format((float) $tasacion->precio_base, 2, '.', ''),
                         'moneda' => $tasacion->moneda ?: 'PEN',

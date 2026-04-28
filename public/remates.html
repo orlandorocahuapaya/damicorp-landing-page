@@ -338,9 +338,11 @@
                 modalFoto.src = item.foto || '';
                 modalTitle.textContent = item.ubicacion_inmueble || '';
                 modalMeta.textContent = 'Número de expediente: ' + (item.numero_expediente || '');
-                modalTasaciones.innerHTML = (item.tasaciones || []).map(function (t, index) {
+                var tasacionLine = '<li><strong>Tasación:</strong> ' + formatMoney(item.tasacion, item.tasacion_moneda) + '</li>';
+                var rematesLines = (item.tasaciones || []).map(function (t, index) {
                     return '<li>' + remateLabel(index) + ' remate - ' + formatDate(t.fecha) + ' - ' + formatTime(t.hora) + ' - Precio base: ' + formatMoney(t.precio_base, t.moneda) + '</li>';
                 }).join('');
+                modalTasaciones.innerHTML = tasacionLine + rematesLines;
                 modal.classList.add('open');
                 modal.setAttribute('aria-hidden', 'false');
                 requestAnimationFrame(function () {
@@ -400,7 +402,6 @@
     </script>
 </body>
 </html>
-
 
 
 

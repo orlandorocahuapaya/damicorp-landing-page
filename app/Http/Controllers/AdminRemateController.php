@@ -40,6 +40,8 @@ class AdminRemateController extends Controller
                 'foto_path' => $this->storePhoto($request),
                 'numero_expediente' => $data['numero_expediente'],
                 'ubicacion_inmueble' => $data['ubicacion_inmueble'],
+                'tasacion' => $data['tasacion'],
+                'tasacion_moneda' => $data['tasacion_moneda'],
             ]);
 
             foreach ($data['tasaciones'] as $tasacion) {
@@ -75,6 +77,8 @@ class AdminRemateController extends Controller
             $payload = [
                 'numero_expediente' => $data['numero_expediente'],
                 'ubicacion_inmueble' => $data['ubicacion_inmueble'],
+                'tasacion' => $data['tasacion'],
+                'tasacion_moneda' => $data['tasacion_moneda'],
             ];
 
             if ($request->hasFile('foto')) {
@@ -117,6 +121,8 @@ class AdminRemateController extends Controller
             'foto' => $photoRules,
             'numero_expediente' => ['required', 'string', 'max:30'],
             'ubicacion_inmueble' => ['required', 'string', 'max:255'],
+            'tasacion' => ['required', 'numeric', 'min:0'],
+            'tasacion_moneda' => ['required', 'in:PEN,USD'],
             'tasaciones' => ['required', 'array', 'min:1'],
             'tasaciones.*.precio_base' => ['required', 'numeric', 'min:0'],
             'tasaciones.*.moneda' => ['required', 'in:PEN,USD'],
