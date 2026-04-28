@@ -12,6 +12,7 @@ class Tasacion extends Model
     protected $fillable = [
         'remate_id',
         'precio_base',
+        'moneda',
         'fecha',
         'hora',
     ];

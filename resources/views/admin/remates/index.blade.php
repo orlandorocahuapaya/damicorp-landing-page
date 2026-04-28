@@ -64,7 +64,7 @@
                     <td>{{ $remate->ubicacion_inmueble }}</td>
                     <td>
                         @foreach($remate->tasaciones as $tasacion)
-                            <div class="muted">{{ optional($tasacion->fecha)->format('d/m/Y') }} {{ substr((string)$tasacion->hora,0,5) }} - S/ {{ number_format((float)$tasacion->precio_base,2) }}</div>
+                            <div class="muted">{{ optional($tasacion->fecha)->format('d/m/Y') }} {{ substr((string)$tasacion->hora,0,5) }} - {{ ($tasacion->moneda ?? 'PEN') === 'USD' ? 'US$' : 'S/' }} {{ number_format((float)$tasacion->precio_base,2) }}</div>
                         @endforeach
                     </td>
                     <td>

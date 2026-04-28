@@ -301,8 +301,9 @@
                 return date.toLocaleDateString('es-PE', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
             }
 
-            function formatMoney(value) {
-                return new Intl.NumberFormat('es-PE', { style: 'currency', currency: 'PEN' }).format(Number(value || 0));
+            function formatMoney(value, currency) {
+                var code = currency === 'USD' ? 'USD' : 'PEN';
+                return new Intl.NumberFormat('es-PE', { style: 'currency', currency: code }).format(Number(value || 0));
             }
 
             function formatTime(value) {
@@ -338,7 +339,7 @@
                 modalTitle.textContent = item.ubicacion_inmueble || '';
                 modalMeta.textContent = 'Número de expediente: ' + (item.numero_expediente || '');
                 modalTasaciones.innerHTML = (item.tasaciones || []).map(function (t, index) {
-                    return '<li>' + remateLabel(index) + ' remate - ' + formatDate(t.fecha) + ' - ' + formatTime(t.hora) + ' - Precio base: ' + formatMoney(t.precio_base) + '</li>';
+                    return '<li>' + remateLabel(index) + ' remate - ' + formatDate(t.fecha) + ' - ' + formatTime(t.hora) + ' - Precio base: ' + formatMoney(t.precio_base, t.moneda) + '</li>';
                 }).join('');
                 modal.classList.add('open');
                 modal.setAttribute('aria-hidden', 'false');
@@ -399,7 +400,6 @@
     </script>
 </body>
 </html>
-
 
 
 

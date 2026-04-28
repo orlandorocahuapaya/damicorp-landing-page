@@ -21,6 +21,7 @@ class PublicRemateController extends Controller
                     'ubicacion_inmueble' => $remate->ubicacion_inmueble,
                     'tasaciones' => $remate->tasaciones->map(fn ($tasacion): array => [
                         'precio_base' => number_format((float) $tasacion->precio_base, 2, '.', ''),
+                        'moneda' => $tasacion->moneda ?: 'PEN',
                         'fecha' => optional($tasacion->fecha)->format('Y-m-d'),
                         'hora' => substr((string) $tasacion->hora, 0, 5),
                     ])->values()->all(),

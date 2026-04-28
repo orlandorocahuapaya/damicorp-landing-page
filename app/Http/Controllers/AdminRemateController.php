@@ -25,7 +25,7 @@ class AdminRemateController extends Controller
     {
         return view('admin.remates.form', [
             'remate' => null,
-            'tasaciones' => [['precio_base' => '', 'fecha' => '', 'hora' => '16:00']],
+            'tasaciones' => [['precio_base' => '', 'moneda' => 'PEN', 'fecha' => '', 'hora' => '16:00']],
             'action' => route('admin.remates.store'),
             'method' => 'POST',
         ]);
@@ -58,6 +58,7 @@ class AdminRemateController extends Controller
             'remate' => $remate,
             'tasaciones' => $remate->tasaciones->map(fn ($t) => [
                 'precio_base' => number_format((float) $t->precio_base, 2, '.', ''),
+                'moneda' => $t->moneda ?: 'PEN',
                 'fecha' => optional($t->fecha)->format('Y-m-d'),
                 'hora' => $t->hora ? substr((string) $t->hora, 0, 5) : '16:00',
             ])->values()->all(),
@@ -118,6 +119,7 @@ class AdminRemateController extends Controller
             'ubicacion_inmueble' => ['required', 'string', 'max:255'],
             'tasaciones' => ['required', 'array', 'min:1'],
             'tasaciones.*.precio_base' => ['required', 'numeric', 'min:0'],
+            'tasaciones.*.moneda' => ['required', 'in:PEN,USD'],
             'tasaciones.*.fecha' => ['required', 'date'],
             'tasaciones.*.hora' => ['required', 'date_format:H:i'],
         ]);

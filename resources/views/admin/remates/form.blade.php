@@ -11,8 +11,8 @@
         .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
         .full{grid-column:1/-1}
         label{display:block;font-weight:700;font-size:.9rem;margin-bottom:6px}
-        input{width:100%;padding:10px;border:1px solid #c9d6eb;border-radius:10px}
-        .row{display:grid;grid-template-columns:1fr 1fr 180px auto;gap:10px;align-items:end;margin-bottom:10px}
+        input,select{width:100%;padding:10px;border:1px solid #c9d6eb;border-radius:10px}
+        .row{display:grid;grid-template-columns:1fr 140px 1fr 180px auto;gap:10px;align-items:end;margin-bottom:10px}
         .btn{background:#214f95;color:#fff;padding:10px 13px;border-radius:10px;text-decoration:none;font-weight:700;border:0;cursor:pointer}
         .btn.alt{background:#6b7e99}
         .actions{display:flex;gap:10px;margin-top:16px}
@@ -59,6 +59,13 @@
                             <input type="number" step="0.01" min="0" name="tasaciones[{{ $index }}][precio_base]" value="{{ $tasacion['precio_base'] ?? '' }}" required>
                         </div>
                         <div>
+                            <label>Moneda</label>
+                            <select name="tasaciones[{{ $index }}][moneda]" required>
+                                <option value="PEN" @selected(($tasacion['moneda'] ?? 'PEN') === 'PEN')>Soles (PEN)</option>
+                                <option value="USD" @selected(($tasacion['moneda'] ?? 'PEN') === 'USD')>Dolares (USD)</option>
+                            </select>
+                        </div>
+                        <div>
                             <label>Fecha</label>
                             <input type="date" name="tasaciones[{{ $index }}][fecha]" value="{{ $tasacion['fecha'] ?? '' }}" required>
                         </div>
@@ -72,6 +79,7 @@
             </div>
             @error('tasaciones') <p class="err">{{ $message }}</p> @enderror
             @error('tasaciones.*.precio_base') <p class="err">{{ $message }}</p> @enderror
+            @error('tasaciones.*.moneda') <p class="err">{{ $message }}</p> @enderror
             @error('tasaciones.*.fecha') <p class="err">{{ $message }}</p> @enderror
             @error('tasaciones.*.hora') <p class="err">{{ $message }}</p> @enderror
 
@@ -93,9 +101,11 @@
             const rows = wrap.querySelectorAll('.tasacion-row');
             rows.forEach((row, i) => {
                 const price = row.querySelector('input[name*="[precio_base]"]');
+                const currency = row.querySelector('select[name*="[moneda]"]');
                 const date = row.querySelector('input[name*="[fecha]"]');
                 const hour = row.querySelector('input[name*="[hora]"]');
                 price.name = `tasaciones[${i}][precio_base]`;
+                currency.name = `tasaciones[${i}][moneda]`;
                 date.name = `tasaciones[${i}][fecha]`;
                 hour.name = `tasaciones[${i}][hora]`;
             });
@@ -121,6 +131,13 @@
                 <div>
                     <label>Precio base</label>
                     <input type="number" step="0.01" min="0" name="tasaciones[${idx}][precio_base]" required>
+                </div>
+                <div>
+                    <label>Moneda</label>
+                    <select name="tasaciones[${idx}][moneda]" required>
+                        <option value="PEN" selected>Soles (PEN)</option>
+                        <option value="USD">Dolares (USD)</option>
+                    </select>
                 </div>
                 <div>
                     <label>Fecha</label>
