@@ -25,7 +25,7 @@ class ContactController extends Controller
 
         $validated = $validator->validated();
 
-        $toEmail = (string) env('CONTACT_TO_EMAIL', 'procesos@damicorperu.com');
+        $toEmail = (string) env('CONTACT_TO_EMAIL', 'administracion@damicorperu.com');
         $subject = 'Formulario Web DAMICOR - '.$this->cleanText($validated['Asunto']);
 
         $body = "Nombre: ".$this->cleanText($validated['Nombre'])."\n"
