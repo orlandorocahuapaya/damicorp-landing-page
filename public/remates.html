@@ -53,6 +53,12 @@
         .section-title small { color:var(--azul-1); text-transform:uppercase; letter-spacing:.08em; font-weight:700; font-size:.78rem; }
         .section-title h2 { margin-top:.35rem; font-size:clamp(1.4rem,3vw,2rem); color:var(--azul-2); }
         .remates-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+        .pagination { margin-top:1rem; display:flex; align-items:center; justify-content:center; gap:.7rem; flex-wrap:wrap; }
+        .pagination[hidden] { display:none; }
+        .page-btn { border:1px solid #b8c8e4; background:#fff; color:var(--azul-2); border-radius:999px; padding:.45rem .85rem; font:inherit; font-size:.88rem; font-weight:700; cursor:pointer; transition:all .18s ease; }
+        .page-btn:hover:not(:disabled) { background:#edf3ff; border-color:#96afd7; }
+        .page-btn:disabled { opacity:.45; cursor:not-allowed; }
+        .page-indicator { color:#2f415e; font-size:.88rem; font-weight:600; min-width:96px; text-align:center; }
         .remate-card { border-radius:16px; overflow:hidden; background:#fff; border:1px solid #d3dded; box-shadow:0 10px 24px rgba(13,29,58,.1); cursor:pointer; transition:transform .18s ease, box-shadow .18s ease; }
         .remate-card:hover { transform:translateY(-3px); box-shadow:0 16px 30px rgba(13,29,58,.16); }
         .remate-card img { width:100%; height:180px; object-fit:contain; object-position:center; background:#eef3fb; display:block; }
@@ -142,6 +148,11 @@
                     <h2>CONVOCATORIAS VIGENTES</h2>
                 </div>
                 <div id="remates-grid" class="remates-grid"></div>
+                <div id="remates-pagination" class="pagination" hidden>
+                    <button id="page-prev" class="page-btn" type="button">Anterior</button>
+                    <span id="page-indicator" class="page-indicator"></span>
+                    <button id="page-next" class="page-btn" type="button">Siguiente</button>
+                </div>
 
                 <div class="section-title">
                     <small>Informacion adicional</small>
@@ -257,7 +268,14 @@
             var modalTitle = document.getElementById('modal-title');
             var modalMeta = document.getElementById('modal-meta');
             var modalTasaciones = document.getElementById('modal-tasaciones');
+            var pagination = document.getElementById('remates-pagination');
+            var prevBtn = document.getElementById('page-prev');
+            var nextBtn = document.getElementById('page-next');
+            var pageIndicator = document.getElementById('page-indicator');
             if (!grid) return;
+            var pageSize = 6;
+            var currentPage = 1;
+            var allItems = [];
             document.body.classList.add('loaded');
 
             var revealObserver = null;
@@ -367,42 +385,81 @@
             });
             applyRevealAnimation();
 
+            function renderPage() {
+                var totalPages = Math.max(1, Math.ceil(allItems.length / pageSize));
+                if (currentPage > totalPages) currentPage = totalPages;
+
+                var start = (currentPage - 1) * pageSize;
+                var pageItems = allItems.slice(start, start + pageSize);
+
+                grid.innerHTML = pageItems.map(function (item, localIndex) {
+                    var globalIndex = start + localIndex;
+                    return '' +
+                        '<article class="remate-card" data-remate-index="' + globalIndex + '">' +
+                            '<img src="' + escapeHtml(item.foto) + '" alt="Remate" loading="lazy">' +
+                            '<div class="remate-body">' +
+                                '<h3>' + escapeHtml(item.ubicacion_inmueble) + '</h3>' +
+                            '</div>' +
+                        '</article>';
+                }).join('');
+
+                grid.querySelectorAll('.remate-card').forEach(function (card) {
+                    card.addEventListener('click', function () {
+                        var idx = Number(card.getAttribute('data-remate-index'));
+                        if (!Number.isNaN(idx) && allItems[idx]) {
+                            openModal(allItems[idx]);
+                        }
+                    });
+                });
+
+                if (allItems.length > pageSize) {
+                    pagination.hidden = false;
+                    pageIndicator.textContent = 'Página ' + currentPage + ' de ' + totalPages;
+                    prevBtn.disabled = currentPage === 1;
+                    nextBtn.disabled = currentPage === totalPages;
+                } else {
+                    pagination.hidden = true;
+                }
+
+                applyRevealAnimation();
+            }
+
+            prevBtn.addEventListener('click', function () {
+                if (currentPage > 1) {
+                    currentPage -= 1;
+                    renderPage();
+                }
+            });
+
+            nextBtn.addEventListener('click', function () {
+                var totalPages = Math.max(1, Math.ceil(allItems.length / pageSize));
+                if (currentPage < totalPages) {
+                    currentPage += 1;
+                    renderPage();
+                }
+            });
+
             fetch('/api/remates-publicos')
                 .then(function (r) { return r.json(); })
                 .then(function (items) {
                     if (!Array.isArray(items) || items.length === 0) {
                         grid.innerHTML = '<article class="content-card"><p>No hay remates publicados por el momento.</p></article>';
+                        pagination.hidden = true;
                         return;
                     }
 
-                    grid.innerHTML = items.map(function (item, index) {
-                        return '' +
-                            '<article class="remate-card" data-remate-index="' + index + '">' +
-                                '<img src="' + escapeHtml(item.foto) + '" alt="Remate" loading="lazy">' +
-                                '<div class="remate-body">' +
-                                    '<h3>' + escapeHtml(item.ubicacion_inmueble) + '</h3>' +
-                                '</div>' +
-                            '</article>';
-                    }).join('');
-
-                    grid.querySelectorAll('.remate-card').forEach(function (card) {
-                        card.addEventListener('click', function () {
-                            var idx = Number(card.getAttribute('data-remate-index'));
-                            if (!Number.isNaN(idx) && items[idx]) {
-                                openModal(items[idx]);
-                            }
-                        });
-                    });
-                    applyRevealAnimation();
+                    allItems = items;
+                    currentPage = 1;
+                    renderPage();
                 })
                 .catch(function () {
                     grid.innerHTML = '<article class="content-card"><p>No se pudo cargar el listado de remates.</p></article>';
+                    pagination.hidden = true;
                 });
         })();
     </script>
 </body>
 </html>
-
 
 
 
