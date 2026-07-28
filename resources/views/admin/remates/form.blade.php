@@ -37,7 +37,9 @@
                 </div>
                 <div>
                     <label for="foto">Foto del remate {{ $remate ? '(opcional al editar)' : '' }}</label>
-                    <input id="foto" name="foto" type="file" accept="image/*" {{ $remate ? '' : 'required' }}>
+                    <input id="foto" name="foto" type="file" accept="image/jpeg,image/png,image/webp" {{ $remate ? '' : 'required' }}>
+                    <p>Formatos permitidos: JPG, PNG o WebP. Máximo {{ config('remates.photo_max_kb') }} KB.</p>
+                    <p id="foto-size-error" class="err" hidden></p>
                     @error('foto') <p class="err">{{ $message }}</p> @enderror
                 </div>
                 <div class="full">
@@ -107,8 +109,22 @@
 </div>
 <script>
     (function () {
+        const photoInput = document.getElementById('foto');
+        const photoSizeError = document.getElementById('foto-size-error');
+        const photoMaxKb = @json((int) config('remates.photo_max_kb'));
+        const photoMaxBytes = photoMaxKb * 1024;
         const wrap = document.getElementById('tasaciones-wrap');
         const addBtn = document.getElementById('add-tasacion');
+
+        photoInput.addEventListener('change', function () {
+            photoSizeError.hidden = true;
+
+            if (photoInput.files[0]?.size > photoMaxBytes) {
+                photoInput.value = '';
+                photoSizeError.textContent = `La imagen no debe superar los ${photoMaxKb} KB.`;
+                photoSizeError.hidden = false;
+            }
+        });
 
         function normalizeIndexes() {
             const rows = wrap.querySelectorAll('.tasacion-row');

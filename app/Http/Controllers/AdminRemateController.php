@@ -110,7 +110,8 @@ class AdminRemateController extends Controller
 
     private function validateRemate(Request $request, bool $requirePhoto): array
     {
-        $photoRules = ['image', 'mimes:jpg,jpeg,png,webp', 'max:4096'];
+        $photoMaxKb = (int) config('remates.photo_max_kb');
+        $photoRules = ['image', 'mimes:jpg,jpeg,png,webp', 'max:'.$photoMaxKb];
         if ($requirePhoto) {
             array_unshift($photoRules, 'required');
         } else {
@@ -128,6 +129,8 @@ class AdminRemateController extends Controller
             'tasaciones.*.moneda' => ['required', 'in:PEN,USD'],
             'tasaciones.*.fecha' => ['required', 'date'],
             'tasaciones.*.hora' => ['required', 'date_format:H:i'],
+        ], [
+            'foto.max' => "La imagen no debe superar los {$photoMaxKb} KB.",
         ]);
     }
 
